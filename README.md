@@ -1,4 +1,4 @@
-# R&D managment reservation - Angular - Prisma - NestJS - GraphQl - Material - i18n - Nx Monorepo  
+# R&D managment reservation - Angular - Prisma - NestJS - GraphQl - Material - i18n - CodeGen - Nx Monorepo - IDEA integration
 
 <a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
 
