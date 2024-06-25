@@ -1,0 +1,81 @@
+<randem-frames-title-template>
+  <randem-frames-title-template-header>
+    <button
+      (click)="openDialogCreate()"
+      mat-fab
+      [matTooltip]="'dodaj klienta'"
+      matTooltipPosition="left"
+      matTooltipHideDelay="300"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+
+    <button [matMenuTriggerFor]="headerMenu" mat-icon-button class="mat-menu-trigger">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu #headerMenu>
+      <button mat-menu-item (click)="openDialogCreate()">
+        <mat-icon>add</mat-icon>
+        dodaj klienta
+      </button>
+    </mat-menu>
+  </randem-frames-title-template-header>
+  <randem-frames-title-template-content>
+    <rl-grid-cards>
+      @for (customer of listCustomer$ | async; track customer) {
+        <rl-card>
+          <rl-card-header>
+            <!--            <rl-card-header-title class="overflow-ellipsis overflow-hidden text-nowrap">-->
+            <!--              <span>{{ user.username }}</span>-->
+            <!--            </rl-card-header-title>-->
+
+            <rl-card-header-action class="text-nowrap absolute right-4 top-2">
+              <ng-container *ngTemplateOutlet="menu; context: { $implicit: customer }"></ng-container>
+            </rl-card-header-action>
+          </rl-card-header>
+          <rl-card-content>
+            <rl-item>
+              <rl-item-label>nazwa klienta</rl-item-label>
+              <rl-item-content>{{ customer.name }}</rl-item-content>
+            </rl-item>
+            <rl-item>
+              <rl-item-label>email klienta</rl-item-label>
+              <rl-item-content>{{ customer.email }}</rl-item-content>
+            </rl-item>
+            <rl-item>
+              <rl-item-label>telefon klienta</rl-item-label>
+              <rl-item-content>{{ customer.phone }}</rl-item-content>
+            </rl-item>
+
+            <!--            <rl-item>-->
+            <!--              <rl-item-label>id</rl-item-label>-->
+            <!--              <rl-item-content>{{ customer.id }}</rl-item-content>-->
+            <!--            </rl-item>-->
+            <!--            <rl-item>-->
+            <!--              <rl-item-label></rl-item-label>-->
+            <!--              <rl-item-content></rl-item-content>-->
+            <!--            </rl-item>-->
+
+          </rl-card-content>
+        </rl-card>
+      }
+    </rl-grid-cards>
+  </randem-frames-title-template-content>
+</randem-frames-title-template>
+
+<ng-template #menu let-customer>
+  <button [matMenuTriggerFor]="cardMenu" mat-icon-button>
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #cardMenu>
+    <button (click)="updateCustomer(customer.id)" mat-menu-item>
+      <mat-icon>edit</mat-icon>
+      <span>edytuj dane użytkownika</span>
+    </button>
+    <button (click)="deleteCustomer(customer.id)" mat-menu-item>
+      <mat-icon color="warn">delete</mat-icon>
+      <span>usuń użytkownika</span>
+    </button>
+  </mat-menu>
+</ng-template>

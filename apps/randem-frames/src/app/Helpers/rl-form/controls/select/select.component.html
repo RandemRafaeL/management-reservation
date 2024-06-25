@@ -1,0 +1,30 @@
+<div #inputSelect [cdkMenuTriggerFor]="menu">
+  <randem-frames-input
+    [controlForm]="selectControl"
+    [errorControlForm]="control"
+    [appearance]="appearance"
+    [formGroupProperty]='formGroupProperty'
+  ></randem-frames-input>
+</div>
+<ng-template #menu>
+  <div
+    *ngIf="inputElement"
+    class="relative inline-flex flex-col input-control text-black bg-neutral-300 items-start rounded-lg overflow-hidden mt-1"
+    cdkMenu
+    [style.width.px]="inputElement.clientWidth"
+    [style.left.px]="inputElement.offsetLeft"
+  >
+    <div class="overflow-y-auto max-h-36 bg-neutral-300 border-2 border-violet-600 rounded-lg w-full">
+      @if (getControlDataType()) {
+        @for (data of getControlDataType(); track data; let index = $index) {
+          <button
+            class="bg-neutral-300 hover:bg-violet-600 hover:text-neutral-200 px-4 py-1 w-full text-left transition-colors"
+            (click)="updateMainControl(index)"
+            cdkMenuItem
+          >
+              {{ getSelectView(index) }}
+          </button>
+      }}
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,5 @@
+mutation UpdateCustomer($updateCustomerId: String!, $updateCustomerInput: UpdateCustomerInput!) {
+    updateCustomer(id: $updateCustomerId, updateCustomerInput: $updateCustomerInput) {
+        ...FullCustomer
+    }
+}

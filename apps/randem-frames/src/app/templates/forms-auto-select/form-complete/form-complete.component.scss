@@ -1,0 +1,42 @@
+//:host {
+//    //border: 1px solid red !important;
+//    .mat-mdc-text-field-wrapper {
+//    }
+//    .mdc-text-field {
+//    }
+//    .mdc-text-field--outlined {
+//    }
+//    .mdc-text-field--no-label {
+//    }
+//}
+
+randem-frames-form-complete {
+    display: block;
+    height: 48px ;
+    overflow: hidden;
+    min-width: 250px;
+    mat-form-field {
+        top: 0;
+        max-height: 48px !important;
+        min-height: 48px !important;
+        display: block;
+        transform: translateY(0px) !important;
+        padding: 0 !important;
+
+    }
+    .mat-mdc-text-field-wrapper {
+        border-radius: 4px;
+        background-color: #f5f5f5;
+        @apply accent-neutral-100;
+    }
+}
+
+.dark {
+    randem-frames-form-complete {
+        .mat-mdc-text-field-wrapper {
+            background-color: #262626;
+            @apply accent-neutral-800;
+        }
+    }
+}
+

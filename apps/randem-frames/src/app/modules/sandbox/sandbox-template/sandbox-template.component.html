@@ -1,0 +1,89 @@
+<randem-frames-title-template>
+  <div
+    class="flex justify-between items-center"
+    style="padding-right: var(--rl-padding); padding-left: var(--rl-padding)"
+  >
+    <rl-card class="!p-2">
+      {{ viewStyle }}
+    </rl-card>
+    <mat-button-toggle-group
+      name="fontStyle"
+      aria-label="Font Style"
+      (valueChange)="viewStyle = $event"
+      [value]="viewStyle"
+    >
+      <mat-button-toggle value="cards">karty</mat-button-toggle>
+      <mat-button-toggle value="list">lista</mat-button-toggle>
+      <mat-button-toggle value="table">tabela</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <randem-frames-title-template-header></randem-frames-title-template-header>
+  <randem-frames-title-template-content>
+    <rl-grid-cards>
+      @for (item of [1, 2, 3, 4, 5, 6, 7, 8]; track item) {
+
+        <rl-card>
+          <rl-card-header [ngClass]="{ '!pb-0': viewStyle === 'list' }">
+            <rl-card-header-image>
+              <randem-frames-image [url]="'image/1f52580a-44a1-4021-821a-bc9033f10370.png'"></randem-frames-image>
+            </rl-card-header-image>
+
+            <rl-card-header-title>card header</rl-card-header-title>
+
+            <rl-card-header-action class="flex gap-6">
+              <mat-icon>edit</mat-icon>
+              <mat-icon>more_vert</mat-icon>
+            </rl-card-header-action>
+          </rl-card-header>
+
+          <rl-card-content *ngIf="viewStyle === 'cards'">
+
+            <rl-item>
+              <rl-item-label>numer telefonu</rl-item-label>
+              <rl-item-content>+48 666 675 8695</rl-item-content>
+            </rl-item>
+
+            <rl-item>
+              <rl-item-image>
+                <randem-frames-image [url]="'image/1f52580a-44a1-4021-821a-bc9033f10370.png'"></randem-frames-image>
+              </rl-item-image>
+              <rl-item-label>imię nazwisko</rl-item-label>
+              <rl-item-content>RafaeL Randem</rl-item-content>
+            </rl-item>
+
+            <rl-card-content-image>
+              <randem-frames-image [url]="'image/2cfe3b73-d9ab-4c9a-a71d-5973094876b2.png'"></randem-frames-image>
+            </rl-card-content-image>
+
+            <rl-item>
+              <rl-item-image>
+                <randem-frames-image [url]="'image/1f52580a-44a1-4021-821a-bc9033f10370.png'"></randem-frames-image>
+              </rl-item-image>
+              <rl-item-label>email</rl-item-label>
+              <rl-item-content>randemrafaerandem-rafaerandemrafaerandemrafael.gmail.com</rl-item-content>
+            </rl-item>
+
+            <rl-item>
+              <rl-item-label>pracuje w firmie</rl-item-label>
+              <rl-item-content>Ryby i inne potwory z wody</rl-item-content>
+            </rl-item>
+            <rl-item>
+              <rl-item-label>stanowisko</rl-item-label>
+              <rl-item-content>specjalista do spraw różnorakich</rl-item-content>
+            </rl-item>
+
+            <rl-item>
+              <rl-item-label>opis</rl-item-label>
+              <rl-item-content>
+                lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam beatae, doloremque eius est
+                fugiat hic iusto natus odio quasi quis reprehenderit sequi. Corporis distinctio doloribus eligendi modi
+                omnis. Nihil!
+              </rl-item-content>
+            </rl-item>
+          </rl-card-content>
+          <rl-card-footer *ngIf="viewStyle === 'cards'">Footer</rl-card-footer>
+        </rl-card>
+      }
+    </rl-grid-cards>
+  </randem-frames-title-template-content>
+</randem-frames-title-template>

@@ -1,0 +1,55 @@
+@import './breakpoints.scss';
+
+.responsive-variables {
+    --rl-padding: 1rem;
+
+    @include breakpoint(xs) {
+        --rl-padding: 0.5rem;
+    }
+    @include breakpoint(sm) {
+        --rl-padding: 1rem;
+    }
+    @include breakpoint(md) {
+        --rl-padding: 1rem;
+    }
+    @include breakpoint(lg) {
+        --rl-padding: 1rem;
+    }
+    @include breakpoint(xl) {
+        --rl-padding: 1.5rem;
+    }
+    @include breakpoint(xxl) {
+        --rl-padding: 2rem;
+    }
+
+    .res-padding {
+        padding: var(--rl-padding);
+    }
+
+    .res-margin {
+        margin: var(--rl-padding);
+    }
+}
+
+//.responsive-card {
+//    --rl-padding-card: 1rem;
+//
+//    @include breakpoint(xs) {
+//        --rl-padding-card: 0.5rem;
+//    }
+//    @include breakpoint(sm) {
+//        --rl-padding-card: 1rem;
+//    }
+//    @include breakpoint(md) {
+//        --rl-padding-card: 1rem;
+//    }
+//    @include breakpoint(lg) {
+//        --rl-padding-card: 1rem;
+//    }
+//    @include breakpoint(xl) {
+//        --rl-padding-card: 1.5rem;
+//    }
+//    @include breakpoint(xxl) {
+//        --rl-padding-card: 2rem;
+//    }
+//}

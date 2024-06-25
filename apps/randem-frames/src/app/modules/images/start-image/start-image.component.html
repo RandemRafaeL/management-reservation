@@ -1,0 +1,19 @@
+<input type="file" (change)="onFileSelected($event)" />
+<button (click)="uploadImage()">Upload</button>
+
+
+<div class='flex flex-row'>
+    <div *ngIf="imageSrc$ | async as imageSrc">
+        Image loaded
+        <img [src]="imageSrc" width="300" alt="" />
+    </div>
+
+    <div *ngIf="imageSrcPreview">image preview
+    <img  [src]="imageSrcPreview" width="300"  alt=''/>
+    </div>
+
+    <div *ngIf="uploadedImage">Obraz został przesłany na serwer zwrotka
+        <p>{{ uploadedImage }}</p>
+    <img  [src]="uploadedImage" width="300"  alt=''/>
+    </div>
+</div>

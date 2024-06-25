@@ -1,0 +1,5 @@
+mutation CreateOfferForEmployee($createOfferForEmployeeInput: CreateOfferForEmployeeInput!) {
+    createOfferForEmployee(createOfferForEmployeeInput: $createOfferForEmployeeInput) {
+       ...DetailFullOfferForEmployee
+    }
+}

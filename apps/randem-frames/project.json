@@ -1,0 +1,207 @@
+{
+    "name": "randem-frames",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "projectType": "application",
+    "prefix": "randem-frames",
+    "sourceRoot": "apps/randem-frames/src",
+    "tags": [],
+    "i18n": {
+        "locales": {
+            "pl": "apps/randem-frames/src/locale/messages.xlf",
+            "en": "apps/randem-frames/src/locale/messages.en.xlf"
+        }
+    },
+    "targets": {
+        "build": {
+            "executor": "@angular-devkit/build-angular:browser",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/apps",
+                "index": "apps/randem-frames/src/index.html",
+                "main": "apps/randem-frames/src/main.ts",
+                "polyfills": ["zone.js"],
+                "tsConfig": "apps/randem-frames/tsconfig.app.json",
+                "assets": ["apps/randem-frames/src/favicon.ico", "apps/randem-frames/src/assets"],
+                "styles": ["apps/randem-frames/src/styles.scss"],
+                "scripts": [],
+                "i18nMissingTranslation": "warning",
+                "allowedCommonJsDependencies": [
+                    "validator",
+                    "class-validator",
+                    "moment",
+                ],
+            },
+            "configurations": {
+                "production": {
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/randem-frames/src/environments/environment.ts",
+                            "with": "apps/randem-frames/src/environments/environment.prod.ts"
+                        }
+                    ],
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "500kb",
+                            "maximumError": "2mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "2kb",
+                            "maximumError": "4kb"
+                        }
+                    ],
+                    "outputHashing": "all",
+                },
+                "production-pl": {
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/randem-frames/src/environments/environment.ts",
+                            "with": "apps/randem-frames/src/environments/environment.prod.ts"
+                        }
+                    ],
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "500kb",
+                            "maximumError": "2mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "2kb",
+                            "maximumError": "4kb"
+                        }
+                    ],
+                    "outputHashing": "all",
+
+                    "outputPath": "dist/apps/randem-frames/prod", // Ścieżka wyjściowa dla rozwoju w lokalizacji PL
+                    "deleteOutputPath": false,
+                    "localize": ["pl"]
+                },
+                "production-en": {
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/randem-frames/src/environments/environment.ts",
+                            "with": "apps/randem-frames/src/environments/environment.prod.ts"
+                        }
+                    ],
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "500kb",
+                            "maximumError": "2mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "2kb",
+                            "maximumError": "4kb"
+                        }
+                    ],
+                    "outputHashing": "all",
+
+                    "outputPath": "dist/apps/randem-frames/prod", // Ścieżka wyjściowa dla rozwoju w lokalizacji EN
+                    "deleteOutputPath": false,
+                    "localize": ["en"]
+                },
+                "development": {
+                    "buildOptimizer": false,
+                    "optimization": false,
+                    "vendorChunk": true,
+                    "extractLicenses": false,
+                    "sourceMap": true,
+                    "namedChunks": true,
+                },
+                "development-pl": {
+                    "buildOptimizer": false,
+                    "optimization": false,
+                    "vendorChunk": true,
+                    "extractLicenses": false,
+                    "sourceMap": true,
+                    "namedChunks": true,
+
+                    "outputPath": "dist/apps/randem-frames/dev", // Ścieżka wyjściowa dla rozwoju w lokalizacji PL
+                    "deleteOutputPath": false,
+                    "localize": ["pl"]
+                },
+                "development-en": {
+                    "buildOptimizer": false,
+                    "optimization": false,
+                    "vendorChunk": true,
+                    "extractLicenses": false,
+                    "sourceMap": true,
+                    "namedChunks": true,
+
+                    "outputPath": "dist/apps/randem-frames/dev", // Ścieżka wyjściowa dla rozwoju w lokalizacji EN
+                    "deleteOutputPath": false,
+                    "localize": ["en"]
+                }
+            },
+            "defaultConfiguration": "production"
+        },
+        "serve": {
+            "executor": "@angular-devkit/build-angular:dev-server",
+            "options": {
+                "buildTarget": "randem-frames:build",
+                "proxyConfig": "apps/randem-frames/proxy.conf.json"
+
+            },
+            "configurations": {
+                "production": {
+                    "buildTarget": "randem-frames:build:production",
+                },
+                "production-pl": {
+                    "buildTarget": "randem-frames:build:production-pl",
+                    "port": 4300,
+                },
+                "production-en": {
+                    "buildTarget": "randem-frames:build:production-en",
+                    "port": 4301
+                },
+                "development": {
+                    "buildTarget": "randem-frames:build:development"
+                },
+                "development-pl": {
+                    "buildTarget": "randem-frames:build:development-pl",
+                    "port": 4200
+                },
+                "development-en": {
+                    "buildTarget": "randem-frames:build:development-en",
+                    "port": 4201
+                },
+                "development-pl-local": {
+                    "buildTarget": "randem-frames:build:development-pl",
+                    "host": "192.168.0.120",
+                    "port": 4200
+                },
+            },
+            "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+            "executor": "@angular-devkit/build-angular:extract-i18n",
+            "options": {
+                "buildTarget": "randem-frames:build",
+                "outputPath": "apps/randem-frames/src/locale",
+                "format": "xlf2",
+                "progress": true
+            }
+        },
+        "lint": {
+            "executor": "@nx/eslint:lint",
+            "outputs": ["{options.outputFile}"]
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+            "options": {
+                "jestConfig": "apps/randem-frames/jest.config.ts"
+            }
+        },
+        "stylelint": {
+            "executor": "nx-stylelint:lint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["apps/randem-frames/**/*.sass", "apps/randem-frames/**/*.scss"]
+            }
+        }
+    }
+}

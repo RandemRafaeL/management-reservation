@@ -1,0 +1,11 @@
+fragment DetailFullOffer on OfferType {
+    id
+    name
+    description
+    category {
+        id
+        name
+        imageUrl
+    }
+    imageUrl
+    }

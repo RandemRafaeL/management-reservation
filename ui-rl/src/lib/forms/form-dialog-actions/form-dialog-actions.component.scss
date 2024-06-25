@@ -1,0 +1,49 @@
+.form-dialog-action-footer {
+    button {
+        min-width: 120px;
+        height: 38px;
+        border: 1px solid rgba(127, 127, 127, 0.7);
+        //@apply border-neutral-600;
+        //overflow: hidden;
+        border-radius: 7px;
+        mat-icon {
+            transform: translateY(1px);
+        }
+
+        &[color='primary'] {
+            @apply border-violet-900;
+        }
+        &[color='accent'] {
+            @apply border-blue-900;
+        }
+        &[color='warn'] {
+            @apply border-red-900;
+        }
+        &:disabled {
+            @apply border shadow-neutral-950;
+            cursor: not-allowed !important;
+        }
+    }
+
+    &.xs,
+    &.sm {
+        .action {
+            justify-content: space-between;
+        }
+
+        .hidden-button {
+            display: none;
+            width: 3rem;
+            max-width: 3rem;
+            min-width: 3rem;
+            mat-icon {
+                overflow: visible;
+                transform: translateX(6px)
+            }
+
+            .label-button {
+                display: none;
+            }
+        }
+    }
+}

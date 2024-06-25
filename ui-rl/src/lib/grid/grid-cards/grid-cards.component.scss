@@ -1,0 +1,31 @@
+.grid-cards-default {
+    display: grid;
+    grid-auto-flow: row;
+    gap: var(--rl-padding);
+    //padding: var(--rl-padding);
+    justify-content: center;
+    position: relative;
+
+    grid-template-columns: repeat(auto-fit, minmax(240px, 360px));
+
+    &.xxs,
+    &.xs {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        //background-color: red;
+    }
+
+
+    &.sm, &.md {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        //background-color: blue;
+    }
+
+    &.lg, &.xl, &.xxl {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        //background-color: green;
+    }
+
+    &.static {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 360px))
+    }
+}

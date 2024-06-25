@@ -1,0 +1,5 @@
+mutation CreateCustomer($createCustomerInput: CreateCustomerInput!) {
+    createCustomer(createCustomerInput: $createCustomerInput) {
+        ...FullCustomer
+    }
+}

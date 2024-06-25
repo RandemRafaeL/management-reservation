@@ -1,0 +1,162 @@
+@use '@angular/material' as mat with (
+    $theme-ignore-duplication-warnings: true
+);
+@use 'sass:map';
+
+// Podstawowe style dla Angular Material
+@include mat.core;
+
+$my-typography: mat.define-typography-config(
+    $font-family: 'Lato, sans-serif',
+);
+
+// Definicja ciemnego motywu
+$dark-theme: mat.define-dark-theme(
+    (
+        color: (
+            primary: mat.define-palette(mat.$deep-purple-palette, 400, 100, 700),
+            accent: mat.define-palette(mat.$blue-grey-palette),
+        ),
+        typography: $my-typography,
+        density: -1,
+    )
+);
+
+// Definicja jasnego motywu
+$light-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: mat.define-palette(mat.$deep-purple-palette, 400, 100, 700),
+            accent: mat.define-palette(mat.$blue-grey-palette),
+        ),
+        typography: $my-typography,
+        density: -1,
+    )
+);
+
+$dark-theme-for-inputs: mat.define-dark-theme(
+    (
+        color: (
+            primary: mat.define-palette(mat.$deep-purple-palette, 200, 100, 700),
+            accent: mat.define-palette(mat.$blue-grey-palette, 300, 100, 700),
+            warn: mat.define-palette(mat.$red-palette, 400, 100, 700),
+        ),
+        typography: $my-typography,
+        density: -2,
+    )
+);
+
+$light-theme-for-inputs: mat.define-light-theme(
+    (
+        color: (
+            primary: mat.define-palette(mat.$deep-purple-palette, 500, 300, 900),
+            accent: mat.define-palette(mat.$blue-grey-palette, 400, 200, 900),
+            warn: mat.define-palette(mat.$red-palette, 500, 300, 900),
+        ),
+        typography: $my-typography,
+        density: -2,
+    )
+);
+
+// Zastosuj tę mieszankę do swoich motywów
+
+// Dodaj do definicji motywu
+
+body,
+body.dark {
+    @include mat.core-theme($dark-theme);
+    @include mat.button-theme($dark-theme);
+    @include mat.all-component-themes($dark-theme);
+    @include mat.form-field-theme($dark-theme-for-inputs);
+}
+
+body.light {
+    @include mat.core-color($light-theme);
+    @include mat.button-color($light-theme);
+    @include mat.all-component-colors($light-theme);
+    @include mat.form-field-theme($light-theme-for-inputs);
+}
+
+.mat-drawer-side {
+    box-shadow: 2px 0 2px rgb(0 0 0 / 10%) !important ;
+}
+
+// fixed wrong label
+.mdc-notched-outline__notch {
+    border-right: none !important;
+}
+
+// Custom themes
+
+.dark  {
+    --mat-select-panel-background-color: rgb(42, 38, 35) !important;
+    --mat-option-selected-state-layer-color: rgba(0, 0, 0, 0.28) !important;
+    --mat-option-selected-state-label-text-color: #9575cd !important;
+}
+
+// I dla motywu ciemnego
+.light {
+    //--mat-select-panel-background-color: black !important;
+
+}
+
+body {
+    .rl-dashboard-bg {
+        position: relative;
+
+        //width: 100%;
+        height: 100%;
+        //background-image: url('../../assets/backgrounds/abstract_1920.jpg');
+        background-attachment: fixed;
+        background-size: cover;
+
+        &::before {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            content: '';
+            backdrop-filter: blur(1px);
+        }
+    }
+
+    &.dark {
+        .rl-dashboard-bg {
+            &::before {
+                background-color: rgb(0 0 0 / 50%);
+            }
+        }
+    }
+
+    &.light {
+        .rl-dashboard-bg {
+            &::before {
+                background-color: rgb(0 0 0 / 15%);
+            }
+        }
+    }
+}
+
+// Niestandardowe style dla Tooltips
+body {
+    .mdc-tooltip__surface {
+        max-width: 480px;
+        padding: 0.7rem;
+        font-size: 14px; // Przykład dostosowania
+        letter-spacing: 1.2px !important;
+        box-shadow: 2px 2px 5px rgb(0 0 0 / 45%);
+    }
+
+    // Jasny motyw
+    &.light .mdc-tooltip__surface {
+        border: 1px solid gray;
+        background-color: white;
+        color: #606060;
+    }
+
+    // Ciemny motyw
+    &.dark .mdc-tooltip__surface {
+        border: 1px solid black;
+        background-color: #4d4d4d;
+        color: white;
+    }
+}

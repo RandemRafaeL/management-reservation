@@ -1,0 +1,7 @@
+mutation DeleteCategoryOfOffer($deleteCategoryOfOfferId: String!) {
+    deleteCategoryOfOffer(id: $deleteCategoryOfOfferId) {
+        id
+        imageUrl
+        name
+    }
+}

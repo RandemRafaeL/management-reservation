@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="2.0" xmlns="urn:oasis:names:tc:xliff:document:2.0" srcLang="en-US">
+  <file id="ngi18n" original="ng.template">
+    <unit id="wrongLoginOrPassword">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/core/auth/login/login.component.ts:62</note>
+      </notes>
+      <segment>
+        <source>nieprawidłowy login lub hasło</source>
+      </segment>
+    </unit>
+    <unit id="language">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.html:15</note>
+      </notes>
+      <segment>
+        <source>Język</source>
+      </segment>
+    </unit>
+    <unit id="polish_lang">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.html:23</note>
+      </notes>
+      <segment>
+        <source>polski</source>
+      </segment>
+    </unit>
+    <unit id="english_lang">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.html:28</note>
+      </notes>
+      <segment>
+        <source>angielski</source>
+      </segment>
+    </unit>
+    <unit id="themePalette">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.html:37</note>
+      </notes>
+      <segment>
+        <source>Paletta kolorów</source>
+      </segment>
+    </unit>
+    <unit id="account">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.html:44</note>
+      </notes>
+      <segment>
+        <source>Konto</source>
+      </segment>
+    </unit>
+    <unit id="company_user">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:111</note>
+      </notes>
+      <segment>
+        <source>Użytkownicy</source>
+      </segment>
+    </unit>
+    <unit id="company_menu">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:112</note>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:136</note>
+      </notes>
+      <segment>
+        <source>Podmiot</source>
+      </segment>
+    </unit>
+    <unit id="employees_manu">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:115</note>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:139</note>
+      </notes>
+      <segment>
+        <source>Pracownicy</source>
+      </segment>
+    </unit>
+    <unit id="services_menu">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:119</note>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:143</note>
+      </notes>
+      <segment>
+        <source>Usługi</source>
+      </segment>
+    </unit>
+    <unit id="analytic_menu">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:120</note>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:144</note>
+      </notes>
+      <segment>
+        <source>Analityka</source>
+      </segment>
+    </unit>
+    <unit id="reservation">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:121</note>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:145</note>
+      </notes>
+      <segment>
+        <source>Rezerwacje</source>
+      </segment>
+    </unit>
+    <unit id="chat_menu">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:125</note>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:147</note>
+      </notes>
+      <segment>
+        <source>Komunikator</source>
+      </segment>
+    </unit>
+    <unit id="email_menu">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:126</note>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:148</note>
+      </notes>
+      <segment>
+        <source>E-mail</source>
+      </segment>
+    </unit>
+    <unit id="table_menu">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:127</note>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:149</note>
+      </notes>
+      <segment>
+        <source>Tablica</source>
+      </segment>
+    </unit>
+    <unit id="tasks_menu">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:128</note>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:150</note>
+      </notes>
+      <segment>
+        <source>Zadania</source>
+      </segment>
+    </unit>
+    <unit id="priceList_menu">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:130</note>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:152</note>
+      </notes>
+      <segment>
+        <source>Cennik</source>
+      </segment>
+    </unit>
+    <unit id="profile">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:131</note>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:153</note>
+      </notes>
+      <segment>
+        <source>Profil</source>
+      </segment>
+    </unit>
+    <unit id="hello_Dashboard">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/start/start-dashboard.component.html:3,5</note>
+      </notes>
+      <segment>
+        <source> Witaj w centrum zarządzania i rezerwacji! </source>
+      </segment>
+    </unit>
+    <unit id="weAreHereCause_Dashboard">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/start/start-dashboard.component.html:6,10</note>
+      </notes>
+      <segment>
+        <source> Jesteśmy tu, aby pomóc Ci zwiększyć efektywność Twojego biznesu. Nasza platforma oferuje kompleksowe rozwiązania do zarządzania rezerwacjami, klientami i usługami. Dzięki intuicyjnym funkcjom i zaawansowanym narzędziom analizy, możesz nie tylko usprawnić codzienną pracę, ale także rozwijać swoją działalność z myślą o przyszłości. </source>
+      </segment>
+    </unit>
+    <unit id="discoverPlatform_Dashboard">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/start/start-dashboard.component.html:18,20</note>
+      </notes>
+      <segment>
+        <source> Odkryj, jak nasza platforma może wpłynąć na przyszłość Twojej firmy. </source>
+      </segment>
+    </unit>
+    <unit id="HereWhatWeOffer_Dashboard">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/start/start-dashboard.component.html:24</note>
+      </notes>
+      <segment>
+        <source>Oto, co oferujemy:</source>
+      </segment>
+    </unit>
+    <unit id="advancedReservationManagement_Dashboard">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/start/start-dashboard.component.html:26,29</note>
+      </notes>
+      <segment>
+        <source> Zaawansowane zarządzanie rezerwacjami: Łatwość w zarządzaniu terminami, elastyczne opcje rezerwacji dla Twoich klientów oraz szybki dostęp do historii i planów pracy. </source>
+      </segment>
+    </unit>
+    <unit id="comprehensiveCustomerDatabase_Dashboard">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/start/start-dashboard.component.html:30,33</note>
+      </notes>
+      <segment>
+        <source> Kompleksowa baza klientów: Przechowuj i zarządzaj informacjami o klientach w bezpieczny i uporządkowany sposób. Poznaj ich potrzeby i preferencje, aby świadczyć jeszcze lepsze usługi. </source>
+      </segment>
+    </unit>
+    <unit id="analysisAndReporting_Dashboard">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/start/start-dashboard.component.html:34,37</note>
+      </notes>
+      <segment>
+        <source> Analiza i raportowanie: Zyskaj dostęp do szczegółowych danych i trendów, które pomogą Ci w podejmowaniu świadomych decyzji biznesowych. Śledź swoje postępy i identyfikuj obszary do rozwoju. </source>
+      </segment>
+    </unit>
+    <unit id="personalizationAndCustomization_Dashboard">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/start/start-dashboard.component.html:38,41</note>
+      </notes>
+      <segment>
+        <source> Personalizacja i dostosowanie: Możliwość dostosowania funkcji platformy do specyfiki Twojej działalności, aby maksymalnie wykorzystać jej potencjał. </source>
+      </segment>
+    </unit>
+    <unit id="ourPlatformIsNotJustATool_Dashboard">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/start/start-dashboard.component.html:42,47</note>
+      </notes>
+      <segment>
+        <source> Nasza platforma to nie tylko narzędzie - to partner w rozwijaniu Twojego biznesu. Niezależnie od tego, czy zarządzasz salonem fryzjerskim, gabinetem kosmetycznym, czy siecią restauracji, nasze rozwiązanie zostało zaprojektowane, aby wspierać Twój sukces na każdym kroku. Rozpocznij swoją podróż ku lepszej organizacji i większej efektywności już teraz. </source>
+      </segment>
+    </unit>
+    <unit id="settings_menu">
+      <notes>
+        <note category="location">ui-rl/src/lib/nav-menu/nav-menu.component.html:40</note>
+      </notes>
+      <segment>
+        <source>Ustawienia</source>
+      </segment>
+    </unit>
+  </file>
+</xliff>

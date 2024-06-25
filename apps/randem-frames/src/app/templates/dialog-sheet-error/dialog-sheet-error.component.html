@@ -1,0 +1,10 @@
+@if (message) {
+  <div class="p-8">
+    @for (item of message; track message) {
+      <div>{{ item['key'] }} - {{ item['value'] }}</div>
+    }
+    <div class="text-center pt-4">
+      <button mat-raised-button color='primary' (click)="dismiss()">Zamknij</button>
+    </div>
+  </div>
+}

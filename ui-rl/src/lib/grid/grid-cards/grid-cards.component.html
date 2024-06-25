@@ -1,0 +1,9 @@
+<div
+  class="grid-cards-default "
+  rlResClass="xxs:xxs xs:xs sm:sm md:md lg:lg xl:xl xxl:xxl"
+  (width)="setWidth($event)"
+  [ngClass]="{ static: isStatic }"
+  [style.grid-template-columns]="isStatic ? 'repeat(auto-fit, minmax(' + minWidth + 'px,' + maxWidth + 'px))' : ''"
+>
+    <ng-content></ng-content>
+</div>

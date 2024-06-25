@@ -1,0 +1,3 @@
+query UniqueUsername($username: String!, $userId: String) {
+    uniqueUsername(username: $username, userId: $userId)
+}

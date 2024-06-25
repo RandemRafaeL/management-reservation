@@ -1,0 +1,13 @@
+{
+  "name": "@randem-frames/ui-rl",
+  "version": "0.0.1",
+  "sideEffects": false,
+  "dependencies": {
+  },
+  "peerDependencies": {
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.0"
+  }
+}

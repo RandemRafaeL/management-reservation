@@ -1,0 +1,5 @@
+query getEmployee($employeeId: String!) {
+    getEmployee(id: $employeeId) {
+       ...DetailFullEmployee
+    }
+}

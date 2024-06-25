@@ -1,0 +1,5 @@
+query ListBooking_User($options: QueryOptionsInput) {
+    listBooking_User(options: $options) {
+        ...DefaultBooking
+    }
+}

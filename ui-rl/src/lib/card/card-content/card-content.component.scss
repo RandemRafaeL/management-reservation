@@ -1,0 +1,30 @@
+// deprecated
+:host {
+    display: block;
+    padding-left: calc(var(--rl-padding) / 2);
+    padding-right: calc(var(--rl-padding) / 2);
+}
+
+:host-context(.dark) {
+    //@apply px-8 ;
+}
+
+rl-card-content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    padding-left: calc(var(--rl-padding) / 2);
+    padding-right: calc(var(--rl-padding) / 2);
+    rl-card-content-image {
+        border-radius: 12px;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+    }
+
+}
+
+.dark {
+    rl-card-content {
+    }
+}

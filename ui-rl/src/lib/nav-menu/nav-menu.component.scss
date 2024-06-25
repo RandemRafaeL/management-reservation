@@ -1,0 +1,11 @@
+.menu-item {
+    opacity: .8;
+    mat-icon.mat-icon {
+        color: var(--mdc-list-list-item-label-text-color) ;
+        margin-right: 1rem;
+    }
+}
+
+.active {
+    background-color: var(--mat-option-selected-state-label-text-color);
+}

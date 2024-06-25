@@ -1,0 +1,7 @@
+mutation UpdateCategoryOfOffer($updateCategoryOfOfferId: String!, $input: UpdateCategoryOfOfferInput!) {
+    updateCategoryOfOffer(id: $updateCategoryOfOfferId, input: $input) {
+        id
+        imageUrl
+        name
+    }
+}

@@ -1,0 +1,5 @@
+mutation DeleteState($key: String!, $userId: String) {
+    deleteState(key: $key, userId: $userId) {
+        id
+    }
+}

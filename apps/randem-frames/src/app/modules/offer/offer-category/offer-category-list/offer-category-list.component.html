@@ -1,0 +1,38 @@
+<rl-grid-cards>
+  @for (category of listCategoryOfOffer | async; track category.id) {
+    <rl-card #gridItem>
+      <rl-card-content>
+        <rl-grid-card-content>
+          <rl-item>
+            <div class='absolute right-0'>
+              <ng-container *ngTemplateOutlet="menu; context: { $implicit: category }"></ng-container>
+            </div>
+
+            <rl-item-image>
+              <randem-frames-image [url]="category.imageUrl" />
+            </rl-item-image>
+
+            <rl-item-label>nazwa</rl-item-label>
+            <rl-item-content class='mr-10'>{{ category.name }}</rl-item-content>
+          </rl-item>
+        </rl-grid-card-content>
+      </rl-card-content>
+    </rl-card>
+  }
+</rl-grid-cards>
+
+<ng-template #menu let-category>
+  <button [matMenuTriggerFor]="cardMenu" mat-icon-button>
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #cardMenu>
+    <button (click)="updateItem(category.id)" mat-menu-item>
+      <mat-icon>edit</mat-icon>
+      <span>edytuj kategorię</span>
+    </button>
+    <button (click)="deleteItemList(category.id)" mat-menu-item>
+      <mat-icon color="warn">delete</mat-icon>
+      <span>usuń kategorię</span>
+    </button>
+  </mat-menu>
+</ng-template>

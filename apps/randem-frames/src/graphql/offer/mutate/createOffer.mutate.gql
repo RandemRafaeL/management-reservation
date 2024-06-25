@@ -1,0 +1,5 @@
+mutation CreateOffer($createOfferInput: CreateOfferInput!) {
+    createOffer(createOfferInput: $createOfferInput) {
+       ...DetailFullOffer
+    }
+}

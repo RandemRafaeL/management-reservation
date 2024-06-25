@@ -1,0 +1,9 @@
+<randem-frames-title-template>
+    <randem-frames-title-template-header></randem-frames-title-template-header>
+    <randem-frames-title-template-content>
+        <rl-card *ngIf='offer$ | async as offer'>
+            <rl-card-header>{{offer.name}}</rl-card-header>
+            <rl-card-content>{{ offer | json}}</rl-card-content>
+        </rl-card>
+    </randem-frames-title-template-content>
+</randem-frames-title-template>

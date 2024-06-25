@@ -1,0 +1,23 @@
+<randem-frames-title-template-header>
+    <button
+        (click)="dialogOpen()"
+        mat-fab
+        [matTooltip]="'Dodaj firmę'"
+        matTooltipPosition="left"
+        matTooltipHideDelay="300"
+    >
+        <mat-icon>add</mat-icon>
+    </button>
+
+    <button [matMenuTriggerFor]="headerMenu" mat-icon-button class="mat-menu-trigger">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+
+</randem-frames-title-template-header>
+
+<mat-menu #headerMenu>
+    <button mat-menu-item (click)="dialogOpen()">
+        <mat-icon>add</mat-icon>
+        dodaj firmę
+    </button>
+</mat-menu>

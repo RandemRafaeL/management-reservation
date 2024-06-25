@@ -1,0 +1,20 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    > * {
+        width: 100%;
+        //max-width: 800px;
+    }
+}
+
+randem-frames-form-complete {
+    margin-bottom: var(--rl-padding);
+}
+
+.active {
+    color: red !important;
+    background: rgba(0, 0, 0, 0.15);
+    opacity: 0.5;
+}

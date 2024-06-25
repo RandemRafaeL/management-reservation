@@ -1,0 +1,41 @@
+fragment DefaultBooking on BookingType {
+    id
+    offerForCompany {
+        id
+        customName
+        customImageUrl
+        company {
+            name
+            imageUrl
+            imageId
+        }
+        offer {
+            id
+            name
+        }
+    }
+    offerForEmployee {
+        id
+        offerForCompany {
+            id
+            offer {
+                id
+                name
+            }
+        }
+        employee {
+            id
+            firstName
+            lastName
+            imageUrl
+        }
+    }
+    bookingDate
+    customer {
+        id
+        name
+        email
+        phone
+    }
+    status
+}

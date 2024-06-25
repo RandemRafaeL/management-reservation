@@ -1,0 +1,5 @@
+mutation DeleteOffer($deleteOfferId: String!) {
+    deleteOffer(id: $deleteOfferId) {
+      ...DetailFullOffer
+    }
+}

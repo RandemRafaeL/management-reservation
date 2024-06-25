@@ -1,0 +1,47 @@
+<randem-frames-title-template>
+    <router-outlet name="header"></router-outlet>
+
+    <!--  <randem-frames-title-template-header>-->
+<!--    <button-->
+<!--      *ngIf="currentRoute === 'list'"-->
+<!--      (click)="openDialogCreate()"-->
+<!--      mat-fab-->
+<!--      [matTooltip]="'Dodaj pracownika'"-->
+<!--      matTooltipPosition="left"-->
+<!--      matTooltipHideDelay="300"-->
+<!--    >-->
+<!--      <mat-icon>add</mat-icon>-->
+<!--    </button>-->
+
+<!--    <button-->
+<!--      *ngIf="currentRoute === 'detail'"-->
+<!--      (click)="openDialogUpdate()"-->
+<!--      mat-fab-->
+<!--      [matTooltip]="'Edytuj kartę'"-->
+<!--      matTooltipPosition="left"-->
+<!--      matTooltipHideDelay="300"-->
+<!--    >-->
+<!--      <mat-icon>edit</mat-icon>-->
+<!--    </button>-->
+
+<!--    <button [matMenuTriggerFor]="headerMenu" mat-icon-button class="mat-menu-trigger">-->
+<!--      <mat-icon>more_vert</mat-icon>-->
+<!--    </button>-->
+
+<!--    <mat-menu #headerMenu>-->
+<!--      <button *ngIf="currentRoute === 'list'" mat-menu-item (click)="openDialogCreate()">-->
+<!--        <mat-icon>add</mat-icon>-->
+<!--        dodaj pracownika-->
+<!--      </button>-->
+
+<!--      <button *ngIf="currentRoute === 'detail'" mat-menu-item (click)="openDialogUpdate()">-->
+<!--        <mat-icon>add</mat-icon>-->
+<!--        edytuj pracownika-->
+<!--      </button>-->
+<!--    </mat-menu>-->
+<!--  </randem-frames-title-template-header>-->
+
+  <randem-frames-title-template-content>
+    <router-outlet></router-outlet>
+  </randem-frames-title-template-content>
+</randem-frames-title-template>

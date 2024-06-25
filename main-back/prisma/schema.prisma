@@ -1,0 +1,248 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model UserTable {
+  id       String         @id @default(uuid())
+  role     UserRoleEnum   @default(USER)
+  username String         @unique
+  password String
+  company  CompanyTable[]
+
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @default(now()) @updatedAt
+  BookingTable BookingTable[]
+
+  @@map("User")
+}
+
+enum UserRoleEnum {
+  ADMIN // Administrator
+  OWNER // Własciciel Konta
+  EMPLOYEE // Pracownicy własciciela
+  USER
+
+  @@map("UserRole") // Uzytkownicy własciciela
+}
+
+model CompanyTable {
+  id          String  @id @default(uuid())
+  imageId     String? // UUID typu opcjonalnego
+  imageUrl    String? // Opcjonalny URL obrazu
+  name        String  @unique // Unikalna nazwa firmy
+  address     String? // Adres firmy
+  email       String // Email firmy
+  phoneNumber String? // Opcjonalny numer telefonu
+  description String? // Opcjonalny opis firmy
+  userId      String // Klucz obcy do użytkownika
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  // Relacje
+  user            UserTable              @relation(fields: [userId], references: [id])
+  employees       EmployeeTable[]
+  offerForCompany OfferForCompanyTable[]
+
+  @@map("Company") // Mapowanie na nazwę tabeli w bazie danych
+}
+
+model EmployeeTable {
+  id          String  @id @default(uuid()) // UUID dla identyfikatora
+  firstName   String // Imię pracownika
+  lastName    String // Nazwisko pracownika
+  email       String  @unique // Email musi być unikalny
+  imageUrl    String?
+  position    String // Stanowisko pracownika
+  isActive    Boolean @default(true) // Status aktywności pracownika
+  phoneNumber String? // Opcjonalny numer telefonu
+  companyId   String // Klucz obcy do Company
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  //  Relacje
+  company          CompanyTable            @relation(fields: [companyId], references: [id])
+  offerForEmployee OfferForEmployeeTable[]
+
+  @@map("Employee") // Mapowanie na nazwę tabeli w bazie danych
+}
+
+model OfferTable {
+  id          String                 @id @default(uuid()) // id typu uuid
+  name        String // Nazwa usługi
+  imageUrl    String?
+  description String? // Opcjonalny opis oferty
+  categoryId  String
+  offers      OfferForCompanyTable[]
+  createdAt   DateTime               @default(now())
+  updatedAt   DateTime               @default(now()) @updatedAt
+
+  // Relacje
+  category CategoryOfOfferTable @relation(fields: [categoryId], references: [id])
+
+  @@unique([categoryId, name])
+  @@map("Offer")
+}
+
+model CategoryOfOfferTable {
+  id       String       @id @default(uuid())
+  name     String
+  imageUrl String?
+  offers   OfferTable[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  @@map("CategoryOfOffer")
+}
+
+model OfferForCompanyTable {
+  id        String @id @default(uuid())
+  offerId   String
+  companyId String
+
+  price        Float // Cena usługi
+  duration     String // Czas trwania w minutach Format HH:mm
+  availability Boolean // Dostępność oferty
+
+  customName        String?
+  customImageUrl    String?
+  customDescription String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  // Relacje
+  offer            OfferTable              @relation(fields: [offerId], references: [id])
+  company          CompanyTable            @relation(fields: [companyId], references: [id])
+  offerForEmployee OfferForEmployeeTable[] // new
+  booking          BookingTable[]
+
+  @@map("OfferForCompany")
+}
+
+model ImageTable {
+  id          String   @id @default(uuid())
+  data        Bytes
+  contentType String
+  fileName    String?
+  size        Int?
+  createdAt   DateTime @default(now())
+}
+
+// new
+model OfferForEmployeeTable {
+  id                String @id @default(uuid())
+  offerForCompanyId String // Klucz obcy do OfferForCompany
+  employeeId        String // Klucz obcy do Employee
+
+  offerForCompany OfferForCompanyTable @relation(fields: [offerForCompanyId], references: [id])
+  employee        EmployeeTable        @relation(fields: [employeeId], references: [id])
+  booking         BookingTable[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  @@unique([employeeId, offerForCompanyId])
+  @@map("OfferForEmployee")
+}
+
+model BookingTable {
+  id                 String        @id @default(uuid())
+  customerId         String // Klucz obcy do UserTable
+  offerForCompanyId  String? // Opcjonalny klucz obcy do OfferForCompanyTable
+  offerForEmployeeId String? // Opcjonalny klucz obcy do OfferForEmployeeTable
+  bookingDate        DateTime // Data i czas rezerwacji
+  status             BookingStatus @default(SCHEDULED) // Status rezerwacji, np. zaplanowana, anulowana, zakończona
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  customer         CustomerTable          @relation(fields: [customerId], references: [id])
+  offerForCompany  OfferForCompanyTable?  @relation(fields: [offerForCompanyId], references: [id])
+  offerForEmployee OfferForEmployeeTable? @relation(fields: [offerForEmployeeId], references: [id])
+  UserTable        UserTable?             @relation(fields: [userTableId], references: [id])
+  userTableId      String?
+
+  @@map("Booking")
+}
+
+enum BookingStatus {
+  SCHEDULED // zaplanowana, zamówiona
+  CANCELED // anulowana
+  CONFIRMED // potwierdzona przez wykonawcę
+  COMPLETED // przyjeta do wykonania
+}
+
+// zamawijacy usługę
+model CustomerTable {
+  id       String         @id @default(uuid())
+  name     String
+  email    String         @unique
+  phone    String?
+  bookings BookingTable[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+model StateTable {
+  id     String @id @default(uuid())
+  key    String
+  userId String
+  value  Json
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  @@unique([key, userId])
+}
+
+// Uprawnienia dla zasobu
+
+// // Enum dla akcji dostępnych dla zasobów
+// enum CrudActionEnum {
+//   READ
+//   WRITE
+//   UPDATE
+//   DELETE
+//   VISIBLE
+// }
+//
+// // Model reprezentujący zasoby (np. tabele, funkcjonalności) w systemie
+// model Resource {
+//   id          String       @id @default(uuid())
+//   name        String
+//   permissions Permission[]
+// }
+//
+// // Model uprawnień przypisanych do zasobów
+// model Permission {
+//   id              String           @id @default(uuid())
+//   action          CrudActionEnum // Używamy enuma Action
+//   resourceId      String
+//   resource        Resource         @relation(fields: [resourceId], references: [id])
+//   rolePermissions RolePermission[]
+// }
+//
+// // Model pośredniczący między Permission a Role, umożliwiający przypisanie wielu ról do wielu uprawnień
+// model RolePermission {
+//   id           String     @id @default(uuid())
+//   roleId       String
+//   role         Role       @relation(fields: [roleId], references: [id])
+//   permissionId String
+//   permission   Permission @relation(fields: [permissionId], references: [id])
+// }
+//
+// // Model ról użytkowników w systemie
+// model Role {
+//   id              String           @id @default(uuid())
+//   name            UserRoleEnum // Używamy enuma RoleName
+//   rolePermissions RolePermission[]
+// }

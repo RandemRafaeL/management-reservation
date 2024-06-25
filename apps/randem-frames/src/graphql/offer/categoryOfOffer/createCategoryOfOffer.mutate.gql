@@ -1,0 +1,7 @@
+mutation CreateCategoryOfOffer($input: CreateCategoryOfOfferInput!) {
+    createCategoryOfOffer(input: $input) {
+        id
+        imageUrl
+        name
+    }
+}

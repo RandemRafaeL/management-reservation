@@ -1,0 +1,5 @@
+query GetAllOffersExtend($options: QueryOptionsInput) {
+    getAllOffers(options: $options) {
+       ...DetailFullOffer
+    }
+}

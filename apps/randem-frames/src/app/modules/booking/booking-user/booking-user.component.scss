@@ -1,0 +1,9 @@
+.grid-list {
+    display: grid;
+    grid-auto-flow: row dense;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-column-gap: 2rem;
+    grid-row-gap: .5rem;
+    align-items: center;
+    //grid-template-rows: 56px;
+}

@@ -1,0 +1,14 @@
+query ListCategoryOfOffer {
+    listCategoryOfOffer {
+        id
+        imageUrl
+        name
+        offers {
+            id
+            name
+            imageUrl
+
+        }
+
+    }
+}

@@ -1,0 +1,15 @@
+:host {
+    --mat-sidenav-scrim-color: rgba(0, 0, 0, 0.4);
+}
+
+.background-image-overlay {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgb(0 0 0 / 60%); /* Ustaw kolor tła i przezroczystość */
+    }
+}
+

@@ -1,0 +1,45 @@
+{
+    "name": "ui-rl",
+    "$schema": "../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "ui-rl/src",
+    "prefix": "rl",
+    "tags": [],
+    "projectType": "library",
+    "targets": {
+        "build": {
+            "executor": "@nx/angular:ng-packagr-lite",
+            "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+            "options": {
+                "project": "ui-rl/ng-package.json",
+                "tailwindConfig": "ui-rl/tailwind.config.js"
+            },
+            "configurations": {
+                "production": {
+                    "tsConfig": "ui-rl/tsconfig.lib.prod.json"
+                },
+                "development": {
+                    "tsConfig": "ui-rl/tsconfig.lib.json"
+                }
+            },
+            "defaultConfiguration": "production"
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+            "options": {
+                "jestConfig": "ui-rl/jest.config.ts"
+            }
+        },
+        "lint": {
+            "executor": "@nx/eslint:lint",
+            "outputs": ["{options.outputFile}"]
+        },
+        "stylelint": {
+            "executor": "nx-stylelint:lint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["ui-rl/**/*.sass", "ui-rl/**/*.scss"]
+            }
+        }
+    }
+}

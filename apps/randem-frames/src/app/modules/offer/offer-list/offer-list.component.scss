@@ -1,0 +1,15 @@
+.offer-container-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--rl-padding);
+    //padding: var(--rl-padding);
+    //@media screen and (width < 1800px) {
+    //    grid-template-columns: 1fr;
+    //}
+}
+
+.offer-list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+    gap: var(--rl-padding);
+}

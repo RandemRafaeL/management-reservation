@@ -1,0 +1,94 @@
+<form [formGroup]="formGroup" autocomplete="off" class="grid-auto-form">
+  @for (appearance of controlAppearanceSignal(); track appearance) {
+    @if (formGroup.get(appearance.key); as control) {
+      <div
+        [class]="[
+          appearance.key,
+          appearance.controlType,
+          appearance.classList,
+          'relative',
+          !!appearance.disabled ? 'disable' : '',
+          !!appearance?.disabled_?.() ? 'disable' : ''
+        ]"
+        [hidden]="!!appearance?.hidden"
+      >
+        <div class="help-label">{{ appearance.key }}-{{ appearance.controlType || 'input' }}</div>
+
+        @if (appearance.controlType === 'image') {
+          <rl-image-form-control
+            [formControlName]="appearance.key"
+            [ngClass]="{ error: control.invalid && (control.touched || control.dirty) }"
+          >
+            <mat-label
+              >{{ appearance.label }}
+              <span *ngIf="control | hasRequiredValidator">*</span>
+            </mat-label>
+            @if (control.touched && (control?.errors | formError)) {
+              <mat-error *ngIf="control?.errors | formError">{{ control?.errors | formError }}</mat-error>
+            }
+          </rl-image-form-control>
+        }
+
+        @if (appearance.controlType === 'input') {
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>{{ appearance.label }}</mat-label>
+            <input
+              [formControlName]="appearance.key"
+              [type]="appearance['input'].type"
+              [placeholder]="appearance.placeholder"
+              matInput
+            />
+            <mat-error>{{ control?.errors | formError }}</mat-error>
+          </mat-form-field>
+        }
+
+        @if (appearance.controlType === 'textarea') {
+          <mat-form-field appearance="outline" [floatLabel]="'auto'" class="w-full h-full">
+            <mat-label>{{ appearance.label }}</mat-label>
+            <textarea
+              class="custom-scrollbar"
+              [cdkTextareaAutosize]="true"
+              [cdkAutosizeMinRows]="2"
+              [cdkAutosizeMaxRows]="2"
+              [placeholder]="appearance.placeholder"
+              [formControlName]="appearance.key"
+              matInput
+            ></textarea>
+          </mat-form-field>
+        }
+
+        @if (appearance.controlType === 'select') {
+          <mat-form-field appearance="outline" [floatLabel]="'auto'" class="w-full">
+            <mat-label>{{ appearance.label }}</mat-label>
+            <mat-select [formControlName]="appearance.key" [placeholder]="appearance.placeholder">
+              @if (appearance['select'].data$ | async; as data) {
+                @for (option of data; track option['id']) {
+                  @if (appearance['select'].id && appearance['select'].option) {
+                    <mat-option [value]="option[appearance['select'].id]">{{
+                      option[appearance['select'].option]
+                    }}</mat-option>
+                  }
+                }
+              }
+            </mat-select>
+            <mat-error>{{ control?.errors | formError }}</mat-error>
+          </mat-form-field>
+        }
+
+        @if (appearance.controlType === 'toggle') {
+          <mat-form-field appearance="outline" [floatLabel]="'auto'" class="w-full">
+            <mat-label>{{ appearance.label }}</mat-label>
+            <mat-select [formControlName]="appearance.key" [placeholder]="appearance.placeholder">
+              @if (appearance['toggle'].data$ | async; as data) {
+                @for (option of data; track option) {
+                  <mat-option [value]="option.val">{{ option.text }}</mat-option>
+                }
+              }
+            </mat-select>
+            <mat-error>{{ control?.errors | formError }}</mat-error>
+          </mat-form-field>
+        }
+      </div>
+    }
+  }
+</form>

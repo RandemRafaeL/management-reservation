@@ -1,0 +1,16 @@
+<randem-frames-title-template-header>
+  <button [matMenuTriggerFor]="cardMenu" mat-icon-button class='mat-menu-trigger'>
+    <mat-icon>more_vert</mat-icon>
+  </button>
+</randem-frames-title-template-header>
+
+<mat-menu #cardMenu>
+  <button (click)="dialogOpen()" mat-menu-item>
+    <mat-icon>edit</mat-icon>
+    <span>edytuj dane firmy</span>
+  </button>
+  <button (click)="deleteCompanyConfirm()" mat-menu-item>
+    <mat-icon color="warn">delete</mat-icon>
+    <span>usuń firmę</span>
+  </button>
+</mat-menu>

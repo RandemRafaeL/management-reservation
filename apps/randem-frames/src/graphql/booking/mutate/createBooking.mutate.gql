@@ -1,0 +1,5 @@
+mutation CreateBooking($createBookingInput: CreateBookingInput!) {
+    createBooking(createBookingInput: $createBookingInput) {
+        ...DefaultBooking
+    }
+}

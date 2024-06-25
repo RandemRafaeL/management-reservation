@@ -1,0 +1,36 @@
+@if (step$ | async; as step) {
+  <div class="landing-container">
+    <section class="header">
+      <div class="header-toolbar flex items-center gap-2">
+        <div>
+          <button (click)='prevStep()'
+              mat-icon-button class='!border'>
+            <mat-icon class='-translate-y-0.5'>arrow_left</mat-icon>
+          </button>
+        </div>
+
+        <div>{{ step?.title }} (step: {{ currentStep$.value }})</div>
+      </div>
+    </section>
+    <section class="content custom-scrollbar">
+      <div class="content-grid">
+        @for (item of step.items; track item) {
+          <div class="content-grid-item relative" (click)="nextStep(item.id)">
+            <randem-frames-selection-item [image]="item.imageUrl || ''" [name]="item.name" />
+          </div>
+        }
+      </div>
+
+      <!--    <div class="content-grid">-->
+      <!--      @for (offer of listOffer$ | async; track offer) {-->
+      <!--        <div class="content-grid-item relative">-->
+      <!--          <randem-frames-selection-item [image]="offer.imageUrl || ''" [name]="offer.name" />-->
+      <!--        </div>-->
+      <!--      }-->
+      <!--    </div>-->
+    </section>
+    <!--            <div class='content-grid-item'></div>-->
+
+    <!--  <section class="footer"></section>-->
+  </div>
+}

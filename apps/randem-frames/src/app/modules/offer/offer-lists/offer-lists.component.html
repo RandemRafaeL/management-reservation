@@ -1,0 +1,28 @@
+<div [hidden]='(userStateRole$ | async) !== "ADMIN"'  class="w-full" #box>
+  @if (width) {
+    <nav
+      class="select-none w-full"
+      [backgroundColor]="'accent'"
+      [tabPanel]="tabPanel"
+      [fitInkBarToContent]="false"
+      [mat-stretch-tabs]="true"
+      mat-tab-nav-bar
+    >
+      @for (tab of tabs; track tab) {
+        <a
+          mat-tab-link
+          class="!min-w-[250px] !text-base"
+          (click)='navigate(tab.link)'
+          [active]="activeLink === tab.link"
+        >
+          {{ tab.label }}
+        </a>
+      }
+    </nav>
+  }
+</div>
+
+<!--       style='height: calc(100vh - 13rem)'>-->
+<mat-tab-nav-panel #tabPanel class="!flex-grow overflow-y-auto h-full res-padding custom-scrollbar">
+  <router-outlet></router-outlet>
+</mat-tab-nav-panel>

@@ -1,0 +1,26 @@
+<div [hidden]="employeeListWithCompanyName() | isEmptyArray">
+  <rl-container [isExpanded]="filterView$ | async">
+    <randem-frames-list-sorter
+      [keyListItem]="'firstName'"
+      [list]="employeeListWithCompanyName()"
+      [options]="options"
+      (sortedList)="onSortedList($event)"
+    ></randem-frames-list-sorter>
+  </rl-container>
+
+  <rl-grid-cards>
+    @for (employee of employeeListWithCompanyNameFiltered(); track employee['id']) {
+      @if (listView$ | async; as view) {
+        <randem-frames-employee-card [employee]="employee" [contentView]="view" />
+      }
+    }
+  </rl-grid-cards>
+</div>
+
+@if (employeeListWithCompanyName() | isEmptyArray) {
+  <div>
+    <rl-card>
+      <rl-card-content> brak pracowników </rl-card-content>
+    </rl-card>
+  </div>
+}

@@ -1,0 +1,59 @@
+@if (offerCompany$ | async; as offerCompany) {
+  <rl-card>
+    <rl-card-content>
+      <rl-grid-card-content class="max-w-[950px] visible">
+        <rl-card-content-image class="row-span-6 w-full aspect-square max-h-[340px] min-w-[250px]">
+          <randem-frames-image [url]="offerCompany.customImageUrl"></randem-frames-image>
+        </rl-card-content-image>
+
+        <rl-item>
+          <rl-item-label>nazwa usługi</rl-item-label>
+          <rl-item-content>{{ offerCompany.customName }}</rl-item-content>
+        </rl-item>
+
+        <rl-item>
+          <rl-item-image>
+            <randem-frames-image
+              [url]="offerCompany.company?.imageId || offerCompany.company?.imageUrl"
+            ></randem-frames-image>
+          </rl-item-image>
+          <rl-item-label>Firma wykonująca</rl-item-label>
+          <rl-item-content>{{ offerCompany.company?.name }}</rl-item-content>
+        </rl-item>
+
+        <rl-item>
+          <rl-item-image>
+            <randem-frames-image [url]="offerCompany.offer?.category?.imageUrl"></randem-frames-image>
+          </rl-item-image>
+          <rl-item-label>kategoria</rl-item-label>
+          <rl-item-content>{{ offerCompany.offer?.category?.name }}</rl-item-content>
+        </rl-item>
+
+        <rl-item>
+          <rl-item-image>
+            <randem-frames-image [url]="offerCompany.offer?.imageUrl"></randem-frames-image>
+          </rl-item-image>
+          <rl-item-label>Oferta ogólna</rl-item-label>
+          <rl-item-content>{{ offerCompany.offer?.name }}</rl-item-content>
+        </rl-item>
+
+        <rl-item>
+          <rl-item-label>czas trwania</rl-item-label>
+          <rl-item-content>{{ offerCompany.duration }}</rl-item-content>
+        </rl-item>
+        <rl-item>
+          <rl-item-label>cena za usługę</rl-item-label>
+          <rl-item-content>{{ offerCompany.price }}</rl-item-content>
+        </rl-item>
+        <rl-item>
+          <rl-item-label>dostępność</rl-item-label>
+          <rl-item-content>{{ offerCompany.availability ? 'dostępna' : 'niedostępna' }}</rl-item-content>
+        </rl-item>
+        <rl-item class="col-span-full">
+          <rl-item-label>opis</rl-item-label>
+          <rl-item-content>{{ offerCompany.customDescription }}</rl-item-content>
+        </rl-item>
+      </rl-grid-card-content>
+    </rl-card-content>
+  </rl-card>
+}

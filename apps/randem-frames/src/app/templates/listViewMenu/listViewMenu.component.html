@@ -1,0 +1,14 @@
+@if (listView) {
+  <button [matMenuTriggerFor]="listViewMenu" mat-icon-button class="!justify-center !items-center">
+    <mat-icon>{{ listViewMatIcon }}</mat-icon>
+  </button>
+
+  <mat-menu #listViewMenu>
+    @for (item of lisViewOptions; track item) {
+      <button mat-menu-item (click)="setState(item.key)" [disabled]="listView === item.key">
+        <mat-icon>{{ item.matIcon }}</mat-icon>
+        <span>{{ item.option }}</span>
+      </button>
+    }
+  </mat-menu>
+}

@@ -1,0 +1,141 @@
+@switch (contentView) {
+  @case ('list') {
+    <rl-card class="h-full rl-card-list">
+      <rl-card-header style='padding: 0 calc(var(--rl-padding) / 2)'>
+        <rl-card-header-image>
+          <randem-frames-image [url]="employee.imageUrl ? employee.imageUrl : ''"></randem-frames-image>
+        </rl-card-header-image>
+
+        <rl-card-header-title class="overflow-ellipsis overflow-hidden text-nowrap">
+          <div>{{ employee.firstName }}</div>
+          <div class="overflow-ellipsis">{{ employee.lastName }}</div>
+        </rl-card-header-title>
+
+        <rl-card-header-action class="text-nowrap">
+          <button [routerLink]="['/dashboard/employee', employee.id, 'detail']" mat-icon-button color="accent">
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+          <ng-container *ngTemplateOutlet="menu; context: { $implicit: employee }"></ng-container>
+        </rl-card-header-action>
+      </rl-card-header>
+    </rl-card>
+  }
+  @case ('small') {
+    <rl-card class="h-full rl-card-list">
+      <rl-card-header>
+        <rl-card-header-image>
+          <randem-frames-image [url]="employee.imageUrl ? employee.imageUrl : ''"></randem-frames-image>
+        </rl-card-header-image>
+
+        <rl-card-header-title class="overflow-ellipsis overflow-hidden text-nowrap">
+          <div>{{ employee.firstName }}</div>
+          <div class="overflow-ellipsis">{{ employee.lastName }}</div>
+        </rl-card-header-title>
+
+        <rl-card-header-action class="text-nowrap">
+          <button [routerLink]="['/dashboard/employee', employee.id, 'detail']" mat-icon-button color="accent">
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+          <ng-container *ngTemplateOutlet="menu; context: { $implicit: employee }"></ng-container>
+        </rl-card-header-action>
+      </rl-card-header>
+
+      <rl-card-content class="employee-card-item-grid gap-2">
+        <rl-item>
+          <rl-item-label>email</rl-item-label>
+          <rl-item-content>{{ employee.email }}</rl-item-content>
+        </rl-item>
+
+        <rl-item>
+          <rl-item-label>numer telefonu</rl-item-label>
+          <rl-item-content>{{ employee.phoneNumber }}</rl-item-content>
+        </rl-item>
+
+        <rl-item>
+          <rl-item-label>dostępność</rl-item-label>
+          <rl-item-content>
+            <span class="uppercase text-xs pt-1" [ngClass]="employee.isActive ? 'text-green-600' : 'text-rose-400'">
+              {{ employee.isActive ? 'Dostępny' : 'Niedostępny' }}
+            </span>
+          </rl-item-content>
+        </rl-item>
+      </rl-card-content>
+    </rl-card>
+  }
+  @case ('full') {
+    <rl-card class="h-full rl-card-list">
+      <rl-card-header>
+        <!--        <rl-card-header-image>-->
+        <!--          <randem-frames-image [url]="employee.imageUrl ? employee.imageUrl : ''"></randem-frames-image>-->
+        <!--        </rl-card-header-image>-->
+
+        <rl-card-header-title class="overflow-ellipsis overflow-hidden text-nowrap">
+          <div class="overflow-ellipsis">{{ employee.firstName }} {{ employee.lastName }}</div>
+        </rl-card-header-title>
+
+        <rl-card-header-action class="text-nowrap">
+          <button [routerLink]="['/dashboard/employee', employee.id, 'detail']" mat-icon-button color="accent">
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+          <ng-container *ngTemplateOutlet="menu; context: { $implicit: employee }"></ng-container>
+        </rl-card-header-action>
+      </rl-card-header>
+
+      <rl-card-content class="employee-card-item-grid gap-2">
+        <rl-card-content-image class='aspect-square'>
+          <randem-frames-image class='max-w-full max-h-full'
+              [url]="employee.imageUrl ? employee.imageUrl : ''"></randem-frames-image>
+        </rl-card-content-image>
+
+        <rl-item>
+          <rl-item-label>imię nazwisko</rl-item-label>
+          <rl-item-content>{{ employee.firstName }} {{ employee.lastName }}</rl-item-content>
+        </rl-item>
+
+        <rl-item>
+          <rl-item-label>email</rl-item-label>
+          <rl-item-content>{{ employee.email }}</rl-item-content>
+        </rl-item>
+
+        <rl-item>
+          <rl-item-label>numer telefonu</rl-item-label>
+          <rl-item-content>{{ employee.phoneNumber }}</rl-item-content>
+        </rl-item>
+
+        <rl-item>
+          <rl-item-label>pracuje w firmie</rl-item-label>
+          <rl-item-content>{{ employee['company.name'] }}</rl-item-content>
+        </rl-item>
+        <rl-item>
+          <rl-item-label>stanowisko</rl-item-label>
+          <rl-item-content>{{ employee.position }}</rl-item-content>
+        </rl-item>
+
+        <rl-item>
+          <rl-item-label>dostępność</rl-item-label>
+          <rl-item-content>
+            <span class="uppercase text-xs pt-1" [ngClass]="employee.isActive ? 'text-green-600' : 'text-rose-400'">
+              {{ employee.isActive ? 'Dostępny' : 'Niedostępny' }}
+            </span>
+          </rl-item-content>
+        </rl-item>
+      </rl-card-content>
+    </rl-card>
+  }
+}
+
+<ng-template #menu let-employee>
+  <button [matMenuTriggerFor]="cardMenu" mat-icon-button>
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #cardMenu>
+    <button (click)="updateItem(employee.id)" mat-menu-item>
+      <mat-icon>edit</mat-icon>
+      <span>edytuj dane pracownika</span>
+    </button>
+    <button (click)="deleteItemList(employee.id)" mat-menu-item>
+      <mat-icon color="warn">delete</mat-icon>
+      <span>usuń kartę pracownika</span>
+    </button>
+  </mat-menu>
+</ng-template>

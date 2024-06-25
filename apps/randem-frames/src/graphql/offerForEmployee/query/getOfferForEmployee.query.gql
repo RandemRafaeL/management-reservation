@@ -1,0 +1,5 @@
+query GetOfferForEmployee($getOfferForEmployeeId: String!) {
+    getOfferForEmployee(id: $getOfferForEmployeeId) {
+        ...DetailFullOfferForEmployee
+    }
+}

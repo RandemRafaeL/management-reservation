@@ -1,0 +1,7 @@
+<button mat-icon-button (click)="toggleFilterState()">
+  @defer {
+    <mat-icon [ngClass]="{ 'opacity-50': !filterState_() }">{{
+      filterState_() ? 'filter_alt' : 'filter_alt_off'
+    }}</mat-icon>
+  }
+</button>

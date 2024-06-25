@@ -1,0 +1,190 @@
+@switch (contentView) {
+  @case ('list') {
+    <rl-card class="h-full">
+      <rl-card-header class="py-0">
+        <rl-card-header-image>
+          <randem-frames-image [url]="offerForEmployee.offerForCompany?.customImageUrl"></randem-frames-image>
+        </rl-card-header-image>
+        <rl-card-header-title>{{
+          offerForEmployee.offerForCompany?.customName || offerForEmployee.offerForCompany?.offer?.name
+        }}</rl-card-header-title>
+
+        <rl-card-header-action class="text-nowrap">
+          <button
+            [routerLink]="['/dashboard/offer/company-services', offerForEmployee.offerForCompany?.id, 'detail']"
+            mat-icon-button
+            color="accent"
+          >
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+          <ng-container *ngTemplateOutlet="menu; context: { $implicit: offerForEmployee }"></ng-container>
+        </rl-card-header-action>
+      </rl-card-header>
+    </rl-card>
+  }
+  @case ('small') {
+    <rl-card class="h-full">
+      <rl-card-header>
+        <rl-card-header-image>
+          <randem-frames-image [url]="offerForEmployee.offerForCompany?.customImageUrl"></randem-frames-image>
+        </rl-card-header-image>
+        <rl-card-header-title>{{
+          offerForEmployee.offerForCompany?.customName || offerForEmployee.offerForCompany?.offer?.name
+        }}</rl-card-header-title>
+
+        <rl-card-header-action class="text-nowrap">
+          <button
+            [routerLink]="['/dashboard/offer/company-services', offerForEmployee.offerForCompany?.id, 'detail']"
+            mat-icon-button
+            color="accent"
+          >
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+          <ng-container *ngTemplateOutlet="menu; context: { $implicit: offerForEmployee }"></ng-container>
+        </rl-card-header-action>
+      </rl-card-header>
+
+      <rl-card-content>
+        <rl-grid-card-content class="max-w-[800px]">
+          <!--          <rl-card-content-image class="row-span-3 image aspect-auto">-->
+          <!--            <randem-frames-image [url]="offerForEmployee.offerForCompany?.customImageUrl"></randem-frames-image>-->
+          <!--          </rl-card-content-image>-->
+
+          @if ((userRole$ | async) === 'ADMIN') {
+            <rl-item>
+              <rl-item-label>imię nazwisko</rl-item-label>
+              <rl-item-content
+                >{{ offerForEmployee.employee?.firstName }} {{ offerForEmployee.employee?.lastName }}</rl-item-content
+              >
+            </rl-item>
+          }
+          <rl-item>
+            <rl-item-label>Oferta ogólna</rl-item-label>
+            <rl-item-content>{{ offerForEmployee.offerForCompany?.offer?.name }}</rl-item-content>
+          </rl-item>
+
+          <rl-item>
+            <rl-item-label>dostępność</rl-item-label>
+            <rl-item-content>{{
+              offerForEmployee.offerForCompany?.availability ? 'dostępna' : 'niedostępna'
+            }}</rl-item-content>
+          </rl-item>
+          <!--          <rl-item>-->
+          <!--            <rl-item-label>czas trwania</rl-item-label>-->
+          <!--            <rl-item-content>{{ offerForEmployee.offerForCompany?.duration }}</rl-item-content>-->
+          <!--          </rl-item>-->
+          <!--          <rl-item>-->
+          <!--            <rl-item-label>cena za usługę</rl-item-label>-->
+          <!--            <rl-item-content>{{ offerForEmployee.offerForCompany?.price }}</rl-item-content>-->
+          <!--          </rl-item>-->
+
+          <!--          <rl-item>-->
+          <!--            <rl-item-label>email</rl-item-label>-->
+          <!--            <rl-item-content>{{ offerForEmployee.employee?.email }}</rl-item-content>-->
+          <!--          </rl-item>-->
+
+          <!--          <rl-item>-->
+          <!--            <rl-item-label>numer telefonu</rl-item-label>-->
+          <!--            <rl-item-content>{{ offerForEmployee.employee?.phoneNumber }}</rl-item-content>-->
+          <!--          </rl-item>-->
+
+          <rl-item class="col-span-full">
+            <rl-item-label>opis</rl-item-label>
+            <rl-item-content>{{ offerForEmployee.offerForCompany?.customDescription }}</rl-item-content>
+          </rl-item>
+        </rl-grid-card-content>
+      </rl-card-content>
+    </rl-card>
+  }
+  @case ('full') {
+    <rl-card class="h-full">
+      <rl-card-header>
+        <rl-card-header-title>{{
+          offerForEmployee.offerForCompany?.customName || offerForEmployee.offerForCompany?.offer?.name
+        }}</rl-card-header-title>
+
+        <rl-card-header-action class="text-nowrap">
+          <button
+              [routerLink]="['/dashboard/offer/company-services', offerForEmployee.offerForCompany?.id, 'detail']"
+            mat-icon-button
+            color="accent"
+          >
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+          <ng-container *ngTemplateOutlet="menu; context: { $implicit: offerForEmployee }"></ng-container>
+        </rl-card-header-action>
+      </rl-card-header>
+
+      <rl-card-content>
+        <rl-grid-card-content class="max-w-[800px]">
+          <rl-card-content-image class="row-span-4 -image aspect-auto min-h-[220px] w-full">
+            <randem-frames-image [url]="offerForEmployee.offerForCompany?.customImageUrl"></randem-frames-image>
+          </rl-card-content-image>
+
+          <rl-item>
+            <rl-item-label>Oferta ogólna</rl-item-label>
+            <rl-item-content>{{ offerForEmployee.offerForCompany?.offer?.name }}</rl-item-content>
+          </rl-item>
+          <rl-item>
+            <rl-item-label>dostępność</rl-item-label>
+            <rl-item-content>{{
+              offerForEmployee.offerForCompany?.availability ? 'dostępna' : 'niedostępna'
+            }}</rl-item-content>
+          </rl-item>
+          <rl-item>
+            <rl-item-label>czas trwania</rl-item-label>
+            <rl-item-content>{{ offerForEmployee.offerForCompany?.duration }}</rl-item-content>
+          </rl-item>
+          <rl-item>
+            <rl-item-label>cena za usługę</rl-item-label>
+            <rl-item-content>{{ offerForEmployee.offerForCompany?.price }}</rl-item-content>
+          </rl-item>
+
+          <rl-item>
+            <rl-item-label>Firma wykonująca</rl-item-label>
+            <rl-item-content>{{ offerForEmployee.offerForCompany?.company?.name }}</rl-item-content>
+          </rl-item>
+
+          @if ((userRole$ | async) === 'ADMIN') {
+            <rl-item>
+              <rl-item-label>imię nazwisko</rl-item-label>
+              <rl-item-content
+                >{{ offerForEmployee.employee?.firstName }} {{ offerForEmployee.employee?.lastName }}</rl-item-content
+              >
+            </rl-item>
+
+            <rl-item>
+              <rl-item-label>email</rl-item-label>
+              <rl-item-content>{{ offerForEmployee.employee?.email }}</rl-item-content>
+            </rl-item>
+
+            <rl-item>
+              <rl-item-label>numer telefonu</rl-item-label>
+              <rl-item-content>{{ offerForEmployee.employee?.phoneNumber }}</rl-item-content>
+            </rl-item>
+          }
+          <rl-item class="col-span-full">
+            <rl-item-label>opis</rl-item-label>
+            <rl-item-content>{{ offerForEmployee.offerForCompany?.customDescription }}</rl-item-content>
+          </rl-item>
+        </rl-grid-card-content>
+      </rl-card-content>
+    </rl-card>
+  }
+}
+
+<ng-template #menu let-offer>
+  <button [matMenuTriggerFor]="cardMenu" mat-icon-button>
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #cardMenu>
+    <button (click)="update(offer.id)" mat-menu-item>
+      <mat-icon>edit</mat-icon>
+      <span>edytuj ofertę pracownika</span>
+    </button>
+    <button (click)="delete(offer.id)" mat-menu-item>
+      <mat-icon color="warn">delete</mat-icon>
+      <span>usuń ofertę pracownika</span>
+    </button>
+  </mat-menu>
+</ng-template>

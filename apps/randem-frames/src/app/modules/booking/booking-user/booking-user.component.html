@@ -1,0 +1,167 @@
+<randem-frames-title-template>
+  <randem-frames-title-template-header [title]="'Zamówienia'">
+    <button class="mat-menu-trigger" mat-icon-button [matMenuTriggerFor]="groupMenu"
+            matTooltip="Widoczność">
+      <mat-icon>rule</mat-icon>
+    </button>
+
+    <button class="mat-menu-trigger" mat-icon-button [matMenuTriggerFor]="statusMenu"
+            matTooltip="Grupowanie">
+      <mat-icon>event_list</mat-icon>
+    </button>
+  </randem-frames-title-template-header>
+
+  <mat-menu #statusMenu>
+    <mat-list-item class="-translate-y-1">Grupowanie</mat-list-item>
+    <mat-divider />
+    <mat-selection-list #grupBy [multiple]="false" (click)="$event.stopPropagation()">
+      <mat-list-option [value]="'status'">status</mat-list-option>
+      <mat-list-option [value]="'none'" [selected]="true">brak</mat-list-option>
+    </mat-selection-list>
+  </mat-menu>
+
+  <mat-menu #groupMenu>
+    <mat-list-item class="-translate-y-1">Widoczność</mat-list-item>
+    <mat-divider />
+    <mat-selection-list #status [multiple]="true" (click)="$event.stopPropagation()">
+      @for (item of selectOptionListStatus; track item) {
+        <mat-list-option [value]="item.key" [selected]="item.visible" (selectedChange)="item.visible = $event">{{
+          item.name
+        }}</mat-list-option>
+      }
+    </mat-selection-list>
+  </mat-menu>
+
+  <randem-frames-title-template-content>
+    @if (filteredListBooking$ | async; as list) {
+      @for (item of list; track item) {
+        <section class="group !pt-0" style="margin-bottom: var(--rl-padding)">
+          <rl-card class="date">
+            <rl-card-header class='max-xs:flex-wrap'>
+              <rl-card-header-title>
+                {{ item.bookingDate | date: 'medium' }}
+              </rl-card-header-title>
+              <rl-card-header-action class="h-8">
+                <button (click)="openChangeStatusDialogConfirm(item)">
+                  <mat-chip class="mr-2">
+                    <small class="font-semibold" style="letter-spacing: 2px">{{
+                      item.status | bookingStatus | uppercase
+                    }}</small>
+
+                    @if (item.status === 'SCHEDULED') {
+                      <mat-icon matChipAvatar class="!text-yellow-600 dark:!text-yellow-400 font-bold">
+                        schedule
+                      </mat-icon>
+                    }
+
+                    @if (item.status === 'CONFIRMED') {
+                      <mat-icon matChipAvatar class="!text-blue-700 dark:!text-blue-300 font-bold">
+                          circle
+                      </mat-icon>
+                    }
+
+                    @if (item.status === 'COMPLETED') {
+                      <mat-icon matChipAvatar class="!text-green-700 dark:!text-green-300 font-bold">
+                        check_circle
+                      </mat-icon>
+                    }
+
+                    @if (item.status === 'CANCELED') {
+                      <mat-icon matChipAvatar class="!text-red-700 dark:!text-red-400 font-bold">
+                        check_indeterminate_small
+                      </mat-icon>
+                    }
+                  </mat-chip>
+                </button>
+
+                <ng-container *ngTemplateOutlet="menu; context: { $implicit: item }" />
+              </rl-card-header-action>
+            </rl-card-header>
+            <rl-card-content>
+              <section class="grid-list">
+                <rl-item>
+                  <rl-item-image>
+                    <randem-frames-image [url]="item.offerForCompany?.customImageUrl" />
+                  </rl-item-image>
+                  <rl-item-label> nazwa usługi </rl-item-label>
+                  <rl-item-content>
+                    {{ item.offerForCompany?.customName }}
+                  </rl-item-content>
+                </rl-item>
+
+                <rl-item>
+                  @if (item.offerForEmployee?.employee) {
+                    <rl-item-image>
+                      <randem-frames-image [url]="item.offerForEmployee?.employee?.imageUrl" />
+                    </rl-item-image>
+                  }
+                  <rl-item-label>pracownik</rl-item-label>
+                  <rl-item-content>
+                    @if (item.offerForEmployee?.employee) {
+                      {{ item.offerForEmployee?.employee?.lastName }} {{ item.offerForEmployee?.employee?.firstName }}
+                    } @else {
+                      brak
+                    }
+                  </rl-item-content>
+                </rl-item>
+                <rl-item>
+                  <rl-item-image>
+                    <randem-frames-image [url]="item.offerForCompany?.company?.imageId" />
+                  </rl-item-image>
+                  <rl-item-label>firma</rl-item-label>
+                  <rl-item-content>
+                    {{ item.offerForCompany?.company?.name }}
+                  </rl-item-content>
+                </rl-item>
+              </section>
+
+              <mat-divider />
+              <section class="col-span-full grid-list">
+                <rl-item>
+                  <rl-item-label>zamawiający</rl-item-label>
+                  <rl-item-content>{{ item.customer?.name }}</rl-item-content>
+                </rl-item>
+                <rl-item>
+                  <rl-item-label>telefon do klienta</rl-item-label>
+                  <rl-item-content>{{ item.customer?.phone }}</rl-item-content>
+                </rl-item>
+                <rl-item>
+                  <rl-item-label>email klienta</rl-item-label>
+                  <rl-item-content>{{ item.customer?.email }}</rl-item-content>
+                </rl-item>
+              </section>
+            </rl-card-content>
+          </rl-card>
+        </section>
+      }
+    }
+  </randem-frames-title-template-content>
+</randem-frames-title-template>
+
+<ng-template #menu let-booking>
+  <button [matMenuTriggerFor]="cardMenu" mat-icon-button>
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #cardMenu>
+    @if (booking.status === 'SCHEDULED') {
+      <button (click)="openChangeStatusDialogConfirm(booking)" mat-menu-item>
+        <mat-icon class="font-bold">circle</mat-icon>
+        <span>potwierdź rezerwacje</span>
+      </button>
+    }
+
+    @if (booking.status === 'CANCELED') {
+      <button (click)="openChangeStatusDialogConfirm(booking)" mat-menu-item>
+        <mat-icon color="accent" class="font-bold">circle</mat-icon>
+        <span>przywróć rezerwacje</span>
+      </button>
+    }
+
+    @if (booking.status === 'CONFIRMED' || booking.status === 'SCHEDULED') {
+      <button (click)="openChangeStatusDialogConfirm(booking, BookingStatus.Canceled)" mat-menu-item>
+        <mat-icon color="warn" class="font-bold">check_indeterminate_small</mat-icon>
+        <span>anuluj rezerwacje</span>
+      </button>
+    }
+  </mat-menu>
+</ng-template>

@@ -1,0 +1,91 @@
+<div class="rl-dashboard mat-app-background h-full max-h-full flex flex-col relative">
+  <ng-container *ngrxLet="currentUser$ as user">
+    <div #toolbar class="fixed w-full">
+      <mat-toolbar color="primary" class="shadow-md shadow-gray-700 z-10">
+        <button mat-icon-button (click)="sidenav.opened = !sidenav.opened">
+          <mat-icon>{{ sidenav.opened ? 'menu_open' : 'menu' }}</mat-icon>
+        </button>
+        <div class="w-full flex gap-2 pl-4">
+          <small>{{ user.username }}</small>
+        </div>
+
+        <button
+          mat-icon-button
+          class=""
+          [matMenuTriggerFor]="languageMenu"
+          matTooltip="Język"
+          i18n-matTooltip="@@language"
+        >
+          <mat-icon>language</mat-icon>
+        </button>
+        <mat-menu #languageMenu="matMenu">
+          <button mat-menu-item (click)="changeLang('pl')">
+            <mat-icon>language</mat-icon>
+            <span i18n="@@polish_lang">polski</span>
+          </button>
+
+          <button mat-menu-item (click)="changeLang('en')">
+            <mat-icon>language</mat-icon>
+            <span i18n="@@english_lang">angielski</span>
+          </button>
+        </mat-menu>
+
+        <ng-container *ngrxLet="currentTheme$ as theme">
+          <button
+            mat-icon-button
+            class="favorite-icon"
+            (click)="changeTheme()"
+            matTooltip="Paletta kolorów"
+            i18n-matTooltip="@@themePalette"
+          >
+            <mat-icon>{{ theme === 'dark' ? 'dark_mode' : 'light_mode' }}</mat-icon>
+          </button>
+        </ng-container>
+
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="accountMenu"
+          (keydown.enter)="$event.preventDefault(); $event.stopPropagation()"
+          matTooltip="Konto"
+          i18n-matTooltip="@@account"
+        >
+          <mat-icon>account_circle</mat-icon>
+        </button>
+
+        <mat-menu #accountMenu="matMenu">
+          <div class="pb-2 px-4">
+            <small class="pt-2 block text-center"> - {{ user.role | roleText }} - </small>
+            <h2 class="mat-h2 text-center">{{ user.username }}</h2>
+          </div>
+
+          <button mat-menu-item>
+            <mat-icon>settings</mat-icon>
+            <span>Ustawienia</span>
+          </button>
+
+          <button mat-menu-item (click)="logOut()">
+            <mat-icon>logout</mat-icon>
+            <span>Wyloguj mnie</span>
+          </button>
+        </mat-menu>
+      </mat-toolbar>
+    </div>
+  </ng-container>
+
+  <section #sidenavContainer class='h-full fixed w-full'>
+    <mat-sidenav-container class="h-full max-h-full" [autosize]='true'>
+      <mat-sidenav
+        #sidenav
+        [mode]="sidenavMode || 'side'"
+        class="p-0 pt-0 !border-r-1 !border-neutral-500 !bg-neutral-200 dark:!bg-neutral-700 max-h-full"
+        [ngClass]="{ 'w-[200px]': (onlyIcon$ | async) === false }"
+      >
+        <rl-nav-menu [navMenuItems]="navMenuItems" />
+      </mat-sidenav>
+
+      <mat-sidenav-content class="flex flex-col rl-dashboard-bg h-full relative">
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </section>
+</div>

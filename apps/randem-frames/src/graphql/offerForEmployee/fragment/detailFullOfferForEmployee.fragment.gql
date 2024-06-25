@@ -1,0 +1,12 @@
+fragment DetailFullOfferForEmployee on OfferForEmployeeType {
+    id
+    employee {
+        ...DetailFullEmployee
+    }
+    offerForCompany {
+        ...DetailFullOfferForCompany
+    }
+    booking {
+        id
+    }
+}

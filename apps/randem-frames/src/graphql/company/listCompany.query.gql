@@ -1,0 +1,21 @@
+query ListCompany {
+    listCompany {
+        user {
+            id
+            role
+            username
+        }
+        ...CompanyTypeFields
+    }
+}
+
+fragment CompanyTypeFields on CompanyType {
+    address
+    description
+    email
+    id
+    imageId
+    imageUrl
+    name
+    phoneNumber
+}

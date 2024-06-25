@@ -1,0 +1,27 @@
+<mat-form-field
+  appearance="outline"
+  class="translate-y-3 justify-self-start px-4 " style='width: calc(100% - 1px)'
+  [color]="color"
+  (click)="!myControl.value || myControl.setValue('')"
+>
+  <input [placeholder]="placeholder" [matAutocomplete]="auto" [formControl]="myControl" matInput />
+
+  <button mat-icon-button matSuffix class="scale-75" (click)="!myControl.value || myControl.setValue('')">
+    <mat-icon>expand_more</mat-icon>
+    <!--    <mat-icon>close</mat-icon>-->
+  </button>
+  <mat-icon *ngIf='noIcon !== true && noIcon !== ""' matPrefix class="border-r border-r-neutral-500 mr-2">search</mat-icon>
+
+  <mat-autocomplete
+    #auto="matAutocomplete"
+    [autoActiveFirstOption]="true"
+    [autoSelectActiveOption]="true"
+    (optionSelected)="emitSelect($event.option.id)"
+  >
+    @for (option of filteredOptions$ | async; track option) {
+      <mat-option [value]="option['name']" (click)="placeholder = option.name" [id]="option['id']">{{
+        option['name']
+      }}</mat-option>
+    }
+  </mat-autocomplete>
+</mat-form-field>

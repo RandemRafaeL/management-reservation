@@ -1,0 +1,51 @@
+@if (company_(); as company) {
+  <rl-card>
+<!--    <rl-card-header>-->
+<!--      <rl-card-header-image>-->
+<!--        <randem-frames-image [url]="company.imageId || 'assets/placeholder/noImage.png'"> </randem-frames-image>-->
+<!--      </rl-card-header-image>-->
+<!--      <rl-card-header-title>-->
+<!--        {{ company.name }}-->
+<!--      </rl-card-header-title>-->
+
+<!--      <rl-card-header-action>-->
+<!--        <ng-container *ngTemplateOutlet="cardMenu; context: { $implicit: company }"></ng-container>-->
+<!--      </rl-card-header-action>-->
+<!--    </rl-card-header>-->
+
+    <rl-card-content>
+      <rl-grid-card-content class="w-full max-w-[800px]">
+        <rl-card-content-image class="row-span-4 h-full w-full" style='min-height: 200px; min-width: 280px'>
+          <randem-frames-image [url]="company.imageUrl || 'assets/placeholder/noImage.png'"> </randem-frames-image>
+        </rl-card-content-image>
+
+        <rl-item>
+          <rl-item-label>Nazwa firmy</rl-item-label>
+          <rl-item-content>{{ company.name }}</rl-item-content>
+        </rl-item>
+
+        <rl-item>
+          <rl-item-label>Email firmy</rl-item-label>
+          <rl-item-content>{{ company.email }}</rl-item-content>
+        </rl-item>
+
+        <rl-item>
+          <rl-item-label>Telefon firmy</rl-item-label>
+          <rl-item-content>{{ company.phoneNumber }}</rl-item-content>
+        </rl-item>
+
+        <rl-item class="col-start-2">
+          <rl-item-label>Adres firmy</rl-item-label>
+          <rl-item-content>{{ company.address }}</rl-item-content>
+        </rl-item>
+
+        <rl-item class="col-span-full">
+          <rl-item-label>Opis firmy</rl-item-label>
+          <rl-item-content>{{ company.description }}</rl-item-content>
+        </rl-item>
+      </rl-grid-card-content>
+    </rl-card-content>
+  </rl-card>
+}
+
+

@@ -1,0 +1,57 @@
+<rl-grid-cards>
+  @for (offer of allOffersSignal(); track offer.id) {
+    <rl-card>
+      <rl-card-header>
+        <rl-card-header-title>{{ offer.name }}</rl-card-header-title>
+        <rl-card-header-action class="text-nowrap">
+          <button [routerLink]="['/dashboard/offer/services', offer.id , 'detail']" mat-icon-button color="accent">
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+          <ng-container *ngTemplateOutlet="menu; context: { $implicit: offer }"></ng-container>
+        </rl-card-header-action>
+      </rl-card-header>
+
+      <rl-card-content>
+        <rl-grid-card-content>
+
+          <rl-card-content-image class='row-span-3 h-full w-full'>
+            <randem-frames-image [url]="offer.imageUrl"></randem-frames-image>
+          </rl-card-content-image>
+
+          <!--          <div class="duration"><span>image</span> {{ offer.imageUrl }}</div>-->
+          <rl-item class="category">
+            <rl-item-label><span>kategoria</span></rl-item-label
+            ><rl-item-content>{{ offer.category?.name }}</rl-item-content>
+          </rl-item>
+
+          <rl-item class="name">
+            <rl-item-label><span>nazwa</span> </rl-item-label>
+            <rl-item-content>{{ offer.name }}</rl-item-content>
+          </rl-item>
+
+          <rl-item class="description">
+            <rl-item-label><span>opis</span> </rl-item-label
+            ><rl-item-content>{{ offer.description || 'brak' }}</rl-item-content>
+          </rl-item>
+        </rl-grid-card-content>
+      </rl-card-content>
+    </rl-card>
+  }
+</rl-grid-cards>
+
+<ng-template #menu let-offer>
+  <button [matMenuTriggerFor]="cardMenu" mat-icon-button>
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #cardMenu>
+    <button (click)="openDialogUpdate(offer)" mat-menu-item>
+      <mat-icon>edit</mat-icon>
+      <span>edytuj usługę</span>
+    </button>
+
+    <button (click)="deleteItemList(offer.id)" mat-menu-item>
+      <mat-icon color="warn">delete</mat-icon>
+      <span>usuń usługę</span>
+    </button>
+  </mat-menu>
+</ng-template>

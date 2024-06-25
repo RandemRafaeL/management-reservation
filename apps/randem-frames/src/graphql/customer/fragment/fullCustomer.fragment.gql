@@ -1,0 +1,20 @@
+fragment FullCustomer on CustomerType {
+    id
+    name
+    email
+    phone
+    bookings {
+        offerForCompany {
+            offer {
+                name
+            }
+        }
+        offerForEmployee {
+            offerForCompany {
+                offer {
+                    name
+                }
+            }
+        }
+    }
+}

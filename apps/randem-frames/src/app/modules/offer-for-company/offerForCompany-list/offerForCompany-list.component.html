@@ -1,0 +1,32 @@
+<div [hidden]="list_() | isEmptyArray">
+  <rl-container [isExpanded]='(filterView$ | async)'>
+    <section class="list-sorter-container">
+      <randem-frames-list-sorter
+        [keyListItem]="'customName'"
+        [list]="list_()"
+        [options]="options"
+        (sortedList)="listFiltered_.set($event)"
+      ></randem-frames-list-sorter>
+    </section>
+  </rl-container>
+
+  <rl-grid-cards>
+    @for (offerCompany of listFiltered_(); track offerCompany) {
+      @if (listView$ | async; as view) {
+        <randem-frames-offer-for-company-card
+          [offerCompany]="offerCompany"
+          [contentView]="view"
+          class="h-full"
+        ></randem-frames-offer-for-company-card>
+      }
+    }
+  </rl-grid-cards>
+</div>
+
+@if (list_() | isEmptyArray) {
+  <div>
+    <rl-card>
+      <rl-card-content> brak zdefiniowanych usług</rl-card-content>
+    </rl-card>
+  </div>
+}

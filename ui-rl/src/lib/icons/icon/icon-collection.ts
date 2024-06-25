@@ -1,0 +1,22 @@
+export const iconCollection = {
+    ok: `<svg class="h-6 w-6 flex-none fill-transparent stroke-green-500 stroke-2"
+        stroke-linecap="round"
+        stroke-linejoin="round">
+        <circle cx="12" cy="12" r="11" />
+        <path d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9" />
+        </svg>`,
+
+    error: `<svg class="h-6 w-6 flex-none fill-transparent stroke-red-500 stroke-2" 
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 9-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" transform="scale(1.1)" transform-origin="center" />
+        </svg>`,
+
+    help: `<svg class="h-6 w-6 flex-none fill-gray-400 stroke-black stroke-1 opacity-60"
+         stroke-linecap="round"
+         stroke-linejoin="round">
+         <path
+         d="M7.6 8.5h8m-8 3.5H12m7.1-7H5c-.2 0-.5 0-.6.3-.2.1-.3.3-.3.6V15c0 .3 0 .5.3.6.1.2.4.3.6.3h4l3 4 3-4h4.1c.2 0 .5 0 .6-.3.2-.1.3-.3.3-.6V6c0-.3 0-.5-.3-.6a.9.9 0 0 0-.6-.3Z"
+         transform="scale(1.2)"
+         transform-origin="center"/>
+         </svg>`,
+};

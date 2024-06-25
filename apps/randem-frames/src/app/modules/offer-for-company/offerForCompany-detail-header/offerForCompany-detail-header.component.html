@@ -1,0 +1,22 @@
+<randem-frames-title-template-header>
+    <div class='mat-menu-trigger'>
+        <ng-container *ngTemplateOutlet="menu; "></ng-container>
+    </div>
+</randem-frames-title-template-header>
+
+<ng-template #menu >
+    <button [matMenuTriggerFor]="cardMenu" mat-icon-button>
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #cardMenu>
+        <button (click)="openDialogUpdate()" mat-menu-item>
+            <mat-icon>edit</mat-icon>
+            <span>edytuj usługę</span>
+        </button>
+
+        <button (click)="deleteItemList()" mat-menu-item>
+            <mat-icon color="warn">delete</mat-icon>
+            <span>usuń usługę</span>
+        </button>
+    </mat-menu>
+</ng-template>

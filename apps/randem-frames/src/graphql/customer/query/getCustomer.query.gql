@@ -1,0 +1,5 @@
+query GetCustomer($getCustomerId: String!) {
+    getCustomer(id: $getCustomerId) {
+        ...FullCustomer
+    }
+}

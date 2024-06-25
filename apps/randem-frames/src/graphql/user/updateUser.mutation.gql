@@ -1,0 +1,7 @@
+mutation UpdateUser($updateUserId: String!, $updateUserInput: UpdateUserInput!) {
+    updateUser(id: $updateUserId, updateUserInput: $updateUserInput) {
+        id
+        role
+        username
+    }
+}

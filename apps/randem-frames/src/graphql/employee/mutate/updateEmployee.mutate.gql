@@ -1,0 +1,5 @@
+mutation UpdateEmployee($updateEmployeeId: String!, $updateEmployeeInput: UpdateEmployeeInput!) {
+    updateEmployee(id: $updateEmployeeId, updateEmployeeInput: $updateEmployeeInput) {
+        ...DetailFullEmployee
+    }
+}

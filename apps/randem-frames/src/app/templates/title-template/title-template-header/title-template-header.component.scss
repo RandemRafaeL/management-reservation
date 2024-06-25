@@ -1,0 +1,33 @@
+@import '../../../../../src/app/core/services/breakpoints/breakpoints';
+
+.title-header {
+    @apply border-b-2 border-purple-800 border-opacity-50 dark:border-purple-800 dark:border-opacity-50 shadow-sm shadow-neutral-400 dark:shadow-neutral-950 z-40 ;
+    position: relative;
+    height: 5rem;
+    overflow: visible;
+    padding-left: var(--rl-padding);
+    h1 {
+        font-size: 1.85rem;
+    }
+
+    @include breakpoint-list(xs,sm) {
+        height: 3.5rem;
+        h1 {
+            font-size: 1.25rem !important;
+        }
+    }
+
+    @include breakpoint-list(md,lg) {
+        height: 4rem;
+        h1 {
+            font-size: 1.5rem !important;
+        }
+    }
+
+    @include breakpoint-list(xl,xxl) {
+        height: 5rem;
+        h1 {
+            font-size: 1.85rem !important;
+        }
+    }
+}

@@ -1,0 +1,98 @@
+$breakpoints: (
+    xs: (
+        min: 0px,
+        max: 479px
+    ),
+    sm: (
+        min: 480px,
+        max: 639px
+    ),
+    md: (
+        min: 640px,
+        max: 959px
+    ),
+    lg: (
+        min: 960px,
+        max: 1259px
+    ),
+    xl: (
+        min: 1260px,
+        max: 1919px
+    ),
+    xxl: (
+        min: 1920px,
+        max: 8192px
+    ),
+) !default;
+
+// deprecated
+@mixin breakpoint($from, $to: null) {
+    @if not map-has-key($breakpoints, $from) {
+        @warn "Nieznany breakpoint: #{$from}.";
+    } @else {
+        $range: map-get($breakpoints, $from);
+        $min-size: map-get($range, min);
+        $max-size: map-get($range, max);
+
+        @if $to == null {
+            @if $min-size != null and $max-size != null {
+                @media (min-width: $min-size) and (max-width: $max-size) {
+                    @content;
+                }
+            } @else if $min-size != null {
+                @media (min-width: $min-size) {
+                    @content;
+                }
+            } @else if $max-size != null {
+                @media (max-width: $max-size) {
+                    @content;
+                }
+            }
+        } @else {
+            @if not map-has-key($breakpoints, $to) {
+                //@warn "!!!!!!!!!!!!!!!!!!!!!!!!!!!!  Nieznany breakpoint: #{$to}.";
+            }
+            else {
+                $to-range: map-get($breakpoints, $to);
+                $from-min-size: $min-size;
+                $to-max-size: map-get($to-range, max);
+
+                @if $from-min-size != null and $to-max-size != null {
+                    //@warn "------------------------------- #{$from-min-size} - #{$to-max-size} ";
+                    //@media (min-width: $from-min-size) and (max-width: $to-max-size) {
+                    $query: '(min-width: #{$from-min-size}) and (max-width: #{$to-max-size})';
+
+                    @media #{$query} {
+                        @content;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+@mixin breakpoint-list($breakpoints-list...) {
+    $query: null;
+
+    @each $breakpoint in $breakpoints-list {
+        @if map-has-key($breakpoints, $breakpoint) {
+            $range: map-get($breakpoints, $breakpoint);
+            $min: map-get($range, min);
+            $max: map-get($range, max) - 1px;
+
+            @if $query == null {
+                $query: '(min-width: #{$min}) and (max-width: #{$max})';
+            } @else {
+                $query: '#{$query}, (min-width: #{$min}) and (max-width: #{$max})';
+            }
+        } @else {
+            @warn "Nieznany breakpoint: '#{$breakpoint}'.";
+        }
+    }
+
+    @media #{$query} {
+        @content;
+    }
+}

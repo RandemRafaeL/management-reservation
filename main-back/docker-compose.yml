@@ -1,0 +1,9 @@
+version: '3'
+services:
+  redis:
+    image: redis
+    command: redis-server /usr/local/etc/redis/redis.conf
+    volumes:
+      - C:/_PROJECTS/randem-frames/main-back/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - "6379:6379"

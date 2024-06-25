@@ -1,0 +1,10 @@
+:host {
+    display: block;
+
+    padding: calc(var(--rl-padding) / 2) var(--rl-padding) 0.5rem;
+    @apply block;
+}
+
+:host-context(.dark) {
+    @apply bg-neutral-800;
+}

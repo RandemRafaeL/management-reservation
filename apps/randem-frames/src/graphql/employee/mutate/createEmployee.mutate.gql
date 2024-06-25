@@ -1,0 +1,5 @@
+mutation CreateEmployee($createEmployeeInput: CreateEmployeeInput!) {
+    createEmployee(createEmployeeInput: $createEmployeeInput) {
+        ...DetailFullEmployee
+    }
+}

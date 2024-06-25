@@ -1,0 +1,77 @@
+@import '../../../../../src/app/core/services/breakpoints/breakpoints';
+
+.grid-cards-offer-for-company {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-auto-rows: 64px;
+    column-gap: 1.5rem;
+    row-gap: 1rem;
+
+    .image {
+        grid-column: span 1;
+        grid-row: span 3;
+    }
+
+    .customDescription {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    @include breakpoint-list(xs, sm, md) {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+        .image {
+            grid-column: span 1;
+            grid-row: span 3;
+        }
+
+        .customDescription {
+            //grid-column: span 1;
+            grid-column: 1 / -1;
+        }
+    }
+
+    @include breakpoint-list(md) {
+        .customDescription {
+            grid-column: 1 / -1;
+        }
+    }
+}
+
+rl-card-footer {
+    button {
+        min-width: 120px;
+        outline: 2px solid rgba(127, 127, 127, 0.7);
+        height: 36px;
+
+        &[color='primary'] {
+            @apply border-violet-900;
+        }
+        &[color='accent'] {
+            @apply border-blue-900;
+        }
+        &[color='warn'] {
+            @apply border-red-900;
+        }
+        &:disabled {
+            cursor: not-allowed !important;
+        }
+    }
+    @include breakpoint-list(xs) {
+        .only-icons {
+            mat-icon.mat-icon {
+                transform: translateX(6px);
+            }
+
+            button {
+                min-width: 48px;
+                text-align: center;
+
+                span {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+

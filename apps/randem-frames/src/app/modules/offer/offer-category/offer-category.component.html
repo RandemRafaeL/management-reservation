@@ -1,0 +1,93 @@
+<section class="p-4">
+  test: {{ width() }}
+  <div
+    class="p-4 grid resize-x overflow-hidden w-[800px] max-xs:w-full bg-neutral-800 h-auto"
+    rlResClass="xxs:xs xs:xs sm:sm md:md lg:lg xl:xl xxl:xxl"
+    (width)="width.set($event)"
+    (mousemove)="('')"
+  >
+    <div class="grid-item row-span-2">
+      <div class="content">image</div>
+    </div>
+
+    <div class="grid-item">
+      <div class="content">content</div>
+    </div>
+    <div class="grid-item col-span-2">
+      <div class="content">big content</div>
+    </div>
+    <div class="grid-item">
+      <div class="content">content</div>
+    </div>
+    <div class="grid-item">
+      <div class="content">content</div>
+    </div>
+    <div class="grid-item col-span-2 row-span-2" style="grid-row: span 2">
+      <div class="content">text-area</div>
+    </div>
+
+    <div class="grid-item">
+      <div class="content">content</div>
+    </div>
+    <div class="grid-item col-span-2">
+      <div class="content">big content</div>
+    </div>
+    <div class="grid-item">
+      <div class="content">content</div>
+    </div>
+    <div class="grid-item">
+      <div class="content">content</div>
+    </div>
+    <div class="grid-item col-span-2 row-span-2" style="grid-row: span 2">
+      <div class="content">text-area</div>
+    </div>
+    <div class="grid-item">
+      <div class="content">content</div>
+    </div>
+  </div>
+</section>
+
+<rl-card class='w-fit'>
+    <rl-card-content>
+        <rl-grid-card-content>
+            <div class="row-span-2">
+                <div class="content">image</div>
+            </div>
+
+            <div class="grid-item">
+                <div class="content">content</div>
+            </div>
+            <div class="grid-item col-span-2">
+                <div class="content">big content</div>
+            </div>
+            <div class="grid-item">
+                <div class="content">content</div>
+            </div>
+            <div class="grid-item">
+                <div class="content">content</div>
+            </div>
+            <div class="grid-item col-span-2 row-span-2" style="grid-row: span 2">
+                <div class="content">text-area</div>
+            </div>
+
+            <div class="grid-item">
+                <div class="content">content</div>
+            </div>
+            <div class="grid-item col-span-2">
+                <div class="content">big content</div>
+            </div>
+            <div class="grid-item">
+                <div class="content">content</div>
+            </div>
+            <div class="grid-item">
+                <div class="content">content</div>
+            </div>
+            <div class="grid-item col-span-2 row-span-2" style="grid-row: span 2">
+                <div class="content">text-area</div>
+            </div>
+            <div class="grid-item">
+                <div class="content">content</div>
+            </div>
+        </rl-grid-card-content>
+    </rl-card-content>
+</rl-card>

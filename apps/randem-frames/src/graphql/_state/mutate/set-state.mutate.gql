@@ -1,0 +1,8 @@
+mutation SetState($input: StateInput!) {
+    setState(input: $input) {
+        id
+        key
+        userId
+        value
+    }
+}

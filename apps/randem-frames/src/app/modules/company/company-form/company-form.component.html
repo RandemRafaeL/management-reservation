@@ -1,0 +1,28 @@
+<rl-form-dialog-container [maxColumn]='2' >
+
+  <rl-card>
+    <rl-card-header>
+      <rl-card-header-title>Zarejestruj swoją działalność</rl-card-header-title>
+      <rl-card-header-action>
+        <button (click)="closeDialog()" mat-icon-button>
+          <mat-icon>close</mat-icon>
+        </button>
+      </rl-card-header-action>
+    </rl-card-header>
+
+      <rl-card-content>
+          <rl-form-auto [formGroup]="companyForm" [formAppearance]="companyFormAppearance" />
+      </rl-card-content>
+
+    <rl-card-footer>
+      <rl-form-dialog-actions
+        [formGroup]="companyForm"
+        [type]="currentId ? 'update' : 'create'"
+        (clickClose)="closeDialog()"
+        (clickCreate)="createCompany()"
+        (clickUpdate)="updateCompany()"
+      >
+      </rl-form-dialog-actions>
+    </rl-card-footer>
+  </rl-card>
+</rl-form-dialog-container>

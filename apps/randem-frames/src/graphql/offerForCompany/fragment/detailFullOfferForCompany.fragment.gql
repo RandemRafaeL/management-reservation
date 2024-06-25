@@ -1,0 +1,25 @@
+fragment DetailFullOfferForCompany on OfferForCompanyType {
+    id
+    customName
+    customDescription
+    customImageUrl
+    duration
+    price
+    availability
+    company {
+        id
+        name
+        imageId
+        imageUrl
+    }
+    offer {
+        id
+        name
+        imageUrl
+        category {
+            id
+            name
+            imageUrl
+        }
+    }
+}

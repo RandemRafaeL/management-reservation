@@ -1,0 +1,70 @@
+.form-image {
+    position: relative;
+    height: 100%;
+    padding: 4px;
+    @apply border border-neutral-500 rounded-md;
+    border-radius: 4px;
+    &:hover {
+        @apply dark:border-neutral-300 border-neutral-800;
+        .form-image-label {
+            //@apply text-neutral-300;
+        }
+        .form-image-content {
+            //@apply
+        }
+    }
+    .saving {
+        visibility: hidden;
+        &.isSaving {
+            visibility: visible;
+            position: absolute;
+            right: 1rem;
+            bottom: 0.7rem;
+        }
+    }
+
+    .form-image-label {
+        @apply absolute left-2 text-xs z-10 px-1 text-neutral-400 rounded-md;
+        background: var(--card-background);
+        top: -10px;
+    }
+    .form-image-content {
+        border-radius: 4px;
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-color: rgba(0, 0, 0, 0.25);
+        opacity: 100%;
+        transition: 0.5s all ease-in-out;
+        &.isSaving {
+            opacity: 70%;
+            filter: grayscale(0.8);
+        }
+        &.contain {
+            background-size: contain;
+        }
+        mat-icon {
+            position: absolute;
+            opacity: 0;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%) scale(1.5);
+            transition: opacity 0.3s ease-in-out;
+            color: whitesmoke;
+        }
+        &:hover {
+            cursor: pointer;
+            mat-icon {
+                opacity: 70%;
+                background-color: black;
+                border-radius: 50%;
+                width: 3rem;
+                height: 3rem;
+                padding: 0.7rem;
+                z-index: -1;
+            }
+        }
+    }
+}

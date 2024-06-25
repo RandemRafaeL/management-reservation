@@ -1,0 +1,17 @@
+mutation UpdateCompanyForUser($updateCompanyId: String!, $updateCompanyForUserInput: UpdateCompanyInput!){
+    updateCompanyForUser(id: $updateCompanyId, updateCompanyForUserInput: $updateCompanyForUserInput) {
+        id
+        name
+        address
+        email
+        phoneNumber
+        description
+        imageId
+        imageUrl
+        user {
+            id
+            role
+            username
+        }
+    }
+}

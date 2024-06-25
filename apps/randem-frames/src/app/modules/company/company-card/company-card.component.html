@@ -1,0 +1,81 @@
+<rl-card *ngrxLet="breakpoint$ | async as breakpoint" class="h-full" rlResClass (resClass)="resClass.set($event)">
+  <rl-card-header>
+    <rl-card-header-title>{{ company['name'] }}</rl-card-header-title>
+
+    <rl-card-header-action class="text-nowrap">
+      <button [routerLink]="['/dashboard/company', company['id'], 'detail']" mat-icon-button color="accent">
+        <mat-icon>open_in_new</mat-icon>
+      </button>
+
+      <ng-container *ngTemplateOutlet="cardMenu; context: { $implicit: company }"></ng-container>
+    </rl-card-header-action>
+  </rl-card-header>
+
+  <rl-card-content>
+    <rl-grid-card-content>
+      <rl-card-content-image class="row-span-3 w-full">
+        <randem-frames-image [url]="company['imageUrl'] || ''"></randem-frames-image>
+      </rl-card-content-image>
+
+      @if (resClass() !== 'xs' || true ) {
+        <rl-item>
+          <rl-item-label>Nazwa użytkownika</rl-item-label>
+          <rl-item-content>{{ company?.['user']?.['username'] }}</rl-item-content>
+        </rl-item>
+
+<!--        <rl-item>-->
+<!--          <rl-item-label>Rola użytkownika</rl-item-label>-->
+<!--          <rl-item-content>{{ parseUserRole(company['user.role']) }}</rl-item-content>-->
+<!--        </rl-item>-->
+      }
+
+      <rl-item *ngIf="resClass() !== 'xs' && resClass() !== 'sm'">
+        <rl-item-label>Nazwa firmy</rl-item-label>
+        <rl-item-content>{{ company['name'] }}</rl-item-content>
+      </rl-item>
+
+      <rl-item>
+        <rl-item-label>Email firmy</rl-item-label>
+        <rl-item-content>{{ company['email'] }}</rl-item-content>
+      </rl-item>
+
+      <rl-item>
+        <rl-item-label>Adres firmy</rl-item-label>
+        <rl-item-content>{{ company['address'] }}</rl-item-content>
+      </rl-item>
+
+      <rl-item>
+        <rl-item-label>Telefon firmy</rl-item-label>
+        <rl-item-content>{{ company['phoneNumber'] }}</rl-item-content>
+      </rl-item>
+
+      <rl-item *ngIf="resClass() !== 'xs' && resClass() !== 'sm' && false" class="col-span-full">
+        <rl-item-label>Opis firmy</rl-item-label>
+        <rl-item-content>{{ company['description'] }}</rl-item-content>
+      </rl-item>
+    </rl-grid-card-content>
+  </rl-card-content>
+
+  <rl-card-footer>
+    <button mat-flat-button color="primary" class="w-full" [routerLink]="['/dashboard/company', company['id'], 'detail']">
+      otwórz szczegóły
+    </button>
+  </rl-card-footer>
+</rl-card>
+
+
+<ng-template #cardMenu let-company>
+  <button [matMenuTriggerFor]="cardMenu" mat-icon-button>
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #cardMenu>
+    <button (click)="dialogOpen(company)" mat-menu-item>
+      <mat-icon>edit</mat-icon>
+      <span>edytuj dane firmy</span>
+    </button>
+    <button (click)="deleteCompanyConfirm(company['id'])" mat-menu-item>
+      <mat-icon color="warn">delete</mat-icon>
+      <span>usuń firmę</span>
+    </button>
+  </mat-menu>
+</ng-template>

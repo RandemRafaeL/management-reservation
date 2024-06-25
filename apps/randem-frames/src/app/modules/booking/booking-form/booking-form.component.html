@@ -1,0 +1,31 @@
+<rl-form-dialog-container maxColumn='2'>
+    <rl-card>
+
+        <rl-card-header>
+            <rl-card-header-title>
+                <span>Zamówienie</span>
+            </rl-card-header-title>
+            <rl-card-header-action>
+                <button mat-icon-button (click)="closeDialog()">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </rl-card-header-action>
+        </rl-card-header>
+
+        <rl-card-content>
+            <rl-form-auto [formAppearance]="bookingAppearance()" [formGroup]="bookingFromGroup" />
+        </rl-card-content>
+
+        <rl-card-footer>
+            <rl-form-dialog-actions
+                [formGroup]="bookingFromGroup"
+                [type]="dialogData.bookingId ? 'update' : 'create'"
+                (clickClose)="closeDialog()"
+                (clickCreate)="createBooking()"
+                (clickUpdate)="updateBooking()"
+            ></rl-form-dialog-actions>
+        </rl-card-footer>
+
+    </rl-card>
+</rl-form-dialog-container>
+

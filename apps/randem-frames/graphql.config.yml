@@ -1,0 +1,12 @@
+schema: http://localhost:3000/graphql
+documents: 'apps/randem-frames/src/graphql/**/*.gql'
+extensions:
+  endpoints:
+    admin:
+      url: http://localhost:3000/graphql
+      introspect: true
+      headers:
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiOWRmYWRlOTYtMzJjYy00YWZjLTlhY2EtZTg4MWQ3MmExMTBhIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzA4OTYzNTE1LCJleHAiOjE3MDg5Njk1MTV9.S-9Ho7ypFZDqqR73eNh6EgC2lNAOWTgwj72WZP0vT9w
+'
+
+

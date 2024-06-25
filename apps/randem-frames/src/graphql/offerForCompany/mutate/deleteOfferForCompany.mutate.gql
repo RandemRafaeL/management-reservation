@@ -1,0 +1,3 @@
+mutation DeleteOfferForCompany($deleteOfferForCompanyId: String!) {
+    deleteOfferForCompany(id: $deleteOfferForCompanyId)
+}

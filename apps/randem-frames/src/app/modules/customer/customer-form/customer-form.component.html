@@ -1,0 +1,28 @@
+<rl-form-dialog-container maxColumn='2'>
+    <rl-card>
+        <rl-card-header>
+            <rl-card-header-title> Oferta Firmy </rl-card-header-title>
+            <rl-card-header-action>
+                <button (click)="close()" mat-icon-button>
+                    <mat-icon>close</mat-icon>
+                </button>
+            </rl-card-header-action>
+        </rl-card-header>
+
+        <rl-card-content>
+            <rl-form-auto [formAppearance]="customerAppearance" [formGroup]="customerFromGroup"></rl-form-auto>
+        </rl-card-content>
+
+        <rl-card-footer>
+            <rl-form-dialog-actions
+                [formGroup]="customerFromGroup"
+                [type]="dialogData.customerId ? 'update' : 'create'"
+                (clickClose)="close()"
+                (clickCreate)="create()"
+                (clickUpdate)="update()"
+            ></rl-form-dialog-actions>
+        </rl-card-footer>
+
+
+    </rl-card>
+</rl-form-dialog-container>

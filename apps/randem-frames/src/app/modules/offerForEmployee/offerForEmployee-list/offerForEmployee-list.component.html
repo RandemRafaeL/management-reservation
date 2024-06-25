@@ -1,0 +1,29 @@
+<div [hidden]="list_() | isEmptyArray">
+  <rl-container [isExpanded]="filterView$ | async">
+    <randem-frames-list-sorter
+      [keyListItem]="'offerForCompany.customName'"
+      [list]="list_()"
+      [options]="options"
+      (sortedList)="onSortedList($event)"
+    ></randem-frames-list-sorter>
+  </rl-container>
+
+  <rl-grid-cards>
+    @for (offerForEmployee of listFiltered_(); track offerForEmployee['id']) {
+      @if (listView$ | async; as view) {
+        <randem-frames-offer-for-employee-list-card [offerForEmployee]="offerForEmployee" [contentView]="view" />
+      }
+    }
+  </rl-grid-cards>
+
+</div>
+
+@if (list_() | isEmptyArray) {
+  <rl-card>
+    <rl-card-content> brak zdefiniowanych usług </rl-card-content>
+  </rl-card>
+}
+
+@if (!list_()) {
+  ERROR!
+}

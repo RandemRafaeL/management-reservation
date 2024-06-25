@@ -1,0 +1,19 @@
+<div
+  class="dialog-confirm"
+  [ngClass]="{ confirmed: type === 'confirmed', danger: type === 'danger' }"
+>
+  <div class="dialog-header divide-black divide-y-reverse p-4 px-6">
+    <div class="text-xl pr-8 text-ellipsis overflow-hidden">{{ title }}</div>
+    <button (click)="close()" class="!absolute right-1 top-1" mat-icon-button><mat-icon>close</mat-icon></button>
+  </div>
+
+  <hr class="bg-neutral-500 h-[1px] border-0 mx-2 opacity-30" />
+
+  <div class="dialog-content flex-1 py-4 px-6" style="font-size: 14px; line-height: 24px" [innerHtml]="message"></div>
+
+  <hr class="bg-neutral-500 h-[1px] border-0 mx-2 opacity-30" />
+  <div class="flex flex-row justify-between dialog-actions py-4 px-6">
+    <button (click)="close()" mat-raised-button color="default">anuluj</button>
+    <button (click)="accept()" mat-raised-button [color]="type === 'danger' ? 'warn' : 'primary' ">potwierdź</button>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+rl-card {
+    @apply block rounded-md overflow-hidden border;
+    background: var(--card-background);
+    border-color: var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding-top: calc(var(--rl-padding) /2 );
+    padding-bottom: calc(var(--rl-padding) /2);
+    position: relative;
+    rl-card-content {
+        flex-grow: 1;
+    }
+}
+
+.dark {
+    rl-card {
+        //@apply bg-neutral-800 border-neutral-500;
+    }
+}
+
+

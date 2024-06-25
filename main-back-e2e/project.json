@@ -1,0 +1,19 @@
+{
+  "name": "main-back-e2e",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "implicitDependencies": ["main-back"],
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{e2eProjectRoot}"],
+      "options": {
+        "jestConfig": "main-back-e2e/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    }
+  }
+}

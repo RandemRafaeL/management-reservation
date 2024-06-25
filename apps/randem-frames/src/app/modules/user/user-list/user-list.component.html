@@ -1,0 +1,69 @@
+<randem-frames-title-template>
+  <randem-frames-title-template-header>
+    <button
+      (click)="openDialogCreate()"
+      mat-fab
+      [matTooltip]="'Dodaj pracownika'"
+      matTooltipPosition="left"
+      matTooltipHideDelay="300"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+
+    <button [matMenuTriggerFor]="headerMenu" mat-icon-button class="mat-menu-trigger">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu #headerMenu>
+      <button mat-menu-item (click)="openDialogCreate()">
+        <mat-icon>add</mat-icon>
+        dodaj użytkownika
+      </button>
+    </mat-menu>
+  </randem-frames-title-template-header>
+
+  <randem-frames-title-template-content>
+    <rl-grid-cards>
+      @for (user of userList$ | async; track user) {
+        <rl-card>
+          <rl-card-header>
+<!--            <rl-card-header-title class="overflow-ellipsis overflow-hidden text-nowrap">-->
+<!--              <span>{{ user.username }}</span>-->
+<!--            </rl-card-header-title>-->
+
+            <rl-card-header-action class="text-nowrap absolute right-4 top-2">
+              <ng-container *ngTemplateOutlet="menu; context: { $implicit: user }"></ng-container>
+            </rl-card-header-action>
+          </rl-card-header>
+
+          <rl-card-content>
+            <rl-item>
+              <rl-item-label>nazwa użytkownika</rl-item-label>
+              <rl-item-content>{{ user.username }}</rl-item-content>
+            </rl-item>
+            <rl-item>
+              <rl-item-label>rola</rl-item-label>
+              <rl-item-content>{{ user.role | roleName }}</rl-item-content>
+            </rl-item>
+          </rl-card-content>
+        </rl-card>
+      }
+    </rl-grid-cards>
+  </randem-frames-title-template-content>
+</randem-frames-title-template>
+
+<ng-template #menu let-user>
+  <button [matMenuTriggerFor]="cardMenu" mat-icon-button>
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #cardMenu>
+    <button (click)="updateUser(user.id)" mat-menu-item>
+      <mat-icon>edit</mat-icon>
+      <span>edytuj dane użytkownika</span>
+    </button>
+    <button (click)="deleteUser(user.id)" mat-menu-item>
+      <mat-icon color="warn">delete</mat-icon>
+      <span>usuń użytkownika</span>
+    </button>
+  </mat-menu>
+</ng-template>

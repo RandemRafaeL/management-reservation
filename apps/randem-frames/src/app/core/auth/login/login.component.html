@@ -1,0 +1,23 @@
+<rl-form-dialog-container maxColumn="1" >
+  <rl-card>
+    <rl-card-header>
+      <rl-card-header-title class='py-4'>
+        <span>Logowanie</span>
+      </rl-card-header-title>
+    </rl-card-header>
+
+    <rl-card-content class=''>
+      <rl-form-auto [formGroup]="loginForm" [formAppearance]="loginFormAppearance" [helpers]="false" />
+      @if (error) {
+        <div class="pl-2 pb-4 text-red-500 h-0 overflow-visible -translate-y-4">{{ error }}</div>
+      }
+    </rl-card-content>
+
+    <rl-card-footer class='text-center'>
+      <button class='w-full'
+          mat-flat-button color="primary" style="width: 180px" (click)="login()" (keydown.enter)="login()">
+        Loguj
+      </button>
+    </rl-card-footer>
+  </rl-card>
+</rl-form-dialog-container>

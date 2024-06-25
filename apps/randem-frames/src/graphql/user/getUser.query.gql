@@ -1,0 +1,8 @@
+query getUser($userId: String!) {
+    getUser(id: $userId) {
+        id
+        username
+        role
+    }
+}
+

@@ -1,0 +1,99 @@
+<randem-frames-title-template>
+  <randem-frames-title-template-header>
+    <button
+      (click)="openDialogCreate()"
+      mat-fab
+      [matTooltip]="'dodaj rezerwację'"
+      matTooltipPosition="left"
+      matTooltipHideDelay="300"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+
+    <button [matMenuTriggerFor]="headerMenu" mat-icon-button class="mat-menu-trigger">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu #headerMenu>
+      <button mat-menu-item (click)="openDialogCreate()">
+        <mat-icon>add</mat-icon>
+        dodaj klienta
+      </button>
+    </mat-menu>
+  </randem-frames-title-template-header>
+  <randem-frames-title-template-content>
+    <rl-grid-cards>
+      @for (booking of listBooking$ | async; track booking) {
+        <rl-card>
+          <rl-card-header>
+            <!--            <rl-card-header-title class="overflow-ellipsis overflow-hidden text-nowrap">-->
+            <!--              <span>{{ user.username }}</span>-->
+            <!--            </rl-card-header-title>-->
+
+            <rl-card-header-action class="text-nowrap absolute right-4 top-2 z-10" >
+              <ng-container *ngTemplateOutlet="menu; context: { $implicit: booking }"></ng-container>
+            </rl-card-header-action>
+          </rl-card-header>
+          <rl-card-content>
+
+            @if (!booking.offerForEmployee?.id) {
+              <rl-item>
+                <rl-item-label>usługa</rl-item-label>
+                <rl-item-content>{{ booking.offerForCompany?.offer?.name }}</rl-item-content>
+              </rl-item>
+            }
+
+            @if (booking.offerForEmployee?.id) {
+              <rl-item>
+                <rl-item-label>usługa</rl-item-label>
+                <rl-item-content>{{ booking.offerForEmployee?.offerForCompany?.offer?.name }}</rl-item-content>
+              </rl-item>
+
+              <rl-item>
+                <rl-item-label>usługa pracownik</rl-item-label>
+                <rl-item-content>
+                  {{ booking.offerForEmployee?.employee?.lastName }}
+                  {{ booking.offerForEmployee?.employee?.firstName }}
+                </rl-item-content>
+              </rl-item>
+            }
+
+            <rl-item>
+              <rl-item-label>klienta</rl-item-label>
+              <rl-item-content>{{ booking.customer?.name }}</rl-item-content>
+            </rl-item>
+            <rl-item>
+              <rl-item-label>data rezerwacji</rl-item-label>
+              <rl-item-content>{{ booking.bookingDate | date: 'd MMM, h:mm'}}</rl-item-content>
+            </rl-item>
+
+            <!--            <rl-item>-->
+            <!--              <rl-item-label>id</rl-item-label>-->
+            <!--              <rl-item-content>{{ customer.id }}</rl-item-content>-->
+            <!--            </rl-item>-->
+            <!--            <rl-item>-->
+            <!--              <rl-item-label></rl-item-label>-->
+            <!--              <rl-item-content></rl-item-content>-->
+            <!--            </rl-item>-->
+          </rl-card-content>
+        </rl-card>
+      }
+    </rl-grid-cards>
+  </randem-frames-title-template-content>
+</randem-frames-title-template>
+
+<ng-template #menu let-customer>
+  <button [matMenuTriggerFor]="cardMenu" mat-icon-button>
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #cardMenu>
+    <button (click)="updateCustomer(customer.id)" mat-menu-item>
+      <mat-icon>edit</mat-icon>
+      <span>edytuj zamówienie</span>
+    </button>
+    <button (click)="deleteCustomer(customer.id)" mat-menu-item>
+      <mat-icon color="warn">delete</mat-icon>
+      <span>usuń zamówienie</span>
+    </button>
+  </mat-menu>
+</ng-template>

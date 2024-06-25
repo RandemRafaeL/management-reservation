@@ -1,0 +1,24 @@
+<div class="form-image w-full relative" (click)="input.click()">
+  <div class="form-image-label">
+    <ng-content select="mat-label"></ng-content>
+  </div>
+
+  <div
+    class="form-image-content contain"
+    [ngClass]="{ isSaving: isSaving }"
+    [style.background-image]="value ? 'url(' + imageSignal() + ')' : ''"
+  >
+    <!--    <mat-icon>edit</mat-icon> -->
+    <!--      TODO dodać tylko w wersji na komputer-->
+  </div>
+  <div class='mat-mdc-form-field-subscript-wrapper px-4 pt-1'>
+      <ng-content select='mat-error'></ng-content>
+  </div>
+
+  <div class="saving flex items-end gap-2 animate-bounce" [ngClass]="{ isSaving: isSaving }">
+    <small>wysyłam...</small>
+    <mat-icon>save</mat-icon>
+  </div>
+</div>
+
+<input #input hidden type="file" (change)="onFile($event)" />

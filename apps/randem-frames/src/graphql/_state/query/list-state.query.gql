@@ -1,0 +1,8 @@
+query ListState {
+    listState {
+        id
+        key
+        userId
+        value
+    }
+}

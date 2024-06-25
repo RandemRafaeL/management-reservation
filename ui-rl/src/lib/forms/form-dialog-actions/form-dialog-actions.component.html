@@ -1,0 +1,53 @@
+<div
+  class="form-dialog-action-footer footer !flex flex-row justify-between w-full overflow-hidden pt-2"
+  rlResClass="xxs:xxs xs:xs sm:sm md:md lg:lg xl:xl xxl:xxl"
+>
+  <div class="flex gap-6">
+    <button mat-raised-button color="warn" (click)="cleanForm()" class="hidden-button">
+      <mat-icon>clear_all</mat-icon>
+      <span class="label-button">Wyczyść</span>
+    </button>
+
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="checkForm()"
+      [disabled]="formGroup.valid"
+      class="hidden-button"
+    >
+      <mat-icon>help</mat-icon>
+      <span class="label-button">Sprawdź</span>
+    </button>
+  </div>
+
+  <div class="flex flex-row gap-4 action">
+    <button (click)="clickClose.emit()" mat-raised-button>
+      <mat-icon>close</mat-icon>
+      <span class="label-button">Zamknij</span>
+    </button>
+
+    @if (type === 'update') {
+      <button
+        (click)="clickUpdate.emit()"
+        [disabled]="formGroup.invalid || formGroup.pending"
+        mat-raised-button
+        color="primary"
+        class="button"
+      >
+        <mat-icon>{{ formGroup.valid ? 'save' : 'error' }}</mat-icon>
+        <span class="label-button">Uaktualnij</span>
+      </button>
+    } @else if (type === 'create') {
+      <button
+        (click)="clickCreate.emit()"
+        [disabled]="formGroup.invalid || formGroup.pending"
+        mat-raised-button
+        color="primary"
+        class="button"
+      >
+        <mat-icon>{{ formGroup.valid ? 'save' : 'error' }}</mat-icon>
+        <span class="label-button">Zapisz</span>
+      </button>
+    }
+  </div>
+</div>

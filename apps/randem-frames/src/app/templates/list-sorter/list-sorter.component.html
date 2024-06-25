@@ -1,0 +1,36 @@
+<mat-form-field appearance="outline" class="filter-list flex-grow !min-w-60">
+  <mat-icon matPrefix class="border-r border-r-neutral-500 mr-2">filter_list</mat-icon>
+  <button class='scale-75' mat-icon-button matSuffix
+          (click)="searchedTextControl.setValue(''); $event.stopPropagation()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <input [formControl]='searchedTextControl'
+      matInput />
+</mat-form-field>
+
+<div class="filter-sort flex">
+  <mat-form-field appearance="outline" class="filter-key !min-w-32">
+    <!--  <mat-label>Toppings</mat-label>-->
+
+    <mat-icon matPrefix class="border-r border-r-neutral-500 mr-2">sort</mat-icon>
+
+    <mat-select [formControl]="keyListItemControl" >
+      <!--    <mat-select-trigger>-->
+      <!--      <span class="pl-2">{{ filterControl.value }}</span>-->
+      <!--    </mat-select-trigger>-->
+
+      @for (option of optionsSignal(); track option.key) {
+        <mat-option [value]="option.key">{{ option.name }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="filter-flow w-28 !min-w-28" style="transform: translateX(-2px)">
+    <mat-icon matPrefix class="border-r border-r-neutral-500 mr-2">sort_by_alpha</mat-icon>
+
+    <mat-select [formControl]="sortingDirectionControl" [value]="'asc'">
+      <mat-option [value]="'asc'">{{ 'a-z' }}</mat-option>
+      <mat-option [value]="'desc'">{{ 'z-a' }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

@@ -1,0 +1,23 @@
+<form [formGroup]="formGroup" autocomplete="off">
+  @for (appearance of controlAppearanceSignal(); track appearance) {
+    @if (formGroup.get(appearance.key); as con) {
+      <randem-frames-input
+        [hidden]="appearance.controlType === 'select'"
+        [controlForm]="con"
+        [appearance]="appearance"
+        [formGroupProperty]="appearance.key"
+        [helpers]="helpers"
+      />
+      <!--      // zrobić osobno select i wpiąć dane na observable-->
+
+      @if (appearance.controlType === 'select') {
+        <randem-frames-select
+          [controlForm]="con"
+          [appearance]="appearance"
+          [pathValue]="pathValue[appearance.key]"
+          [helpers]="helpers"
+        ></randem-frames-select>
+      }
+    }
+  }
+</form>

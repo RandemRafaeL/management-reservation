@@ -1,0 +1,8 @@
+mutation UpdateOfferForCompany(
+    $updateOfferForCompanyId: String!
+    $updateOfferForCompanyInput: UpdateOfferForCompanyInput!
+) {
+    updateOfferForCompany(id: $updateOfferForCompanyId, updateOfferForCompanyInput: $updateOfferForCompanyInput) {
+        ...DetailFullOfferForCompany
+    }
+}

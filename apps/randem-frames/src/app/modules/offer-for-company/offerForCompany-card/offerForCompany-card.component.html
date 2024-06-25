@@ -1,0 +1,181 @@
+@switch (contentView) {
+  @case ('list') {
+    <rl-card class="h-full w-full flex-grow col-span-full">
+      <rl-card-header class="py-0">
+        <rl-card-header-image>
+          <randem-frames-image [url]="offerCompany.customImageUrl"></randem-frames-image>
+        </rl-card-header-image>
+        <rl-card-header-title>{{
+          offerCompany.customName || offerCompany.offer?.name || 'NO NAME!!'
+        }}</rl-card-header-title>
+        <rl-card-header-action class="text-nowrap">
+          <button
+            [routerLink]="['/dashboard/offer/company-services', offerCompany.id, 'detail']"
+            mat-icon-button
+            color="accent"
+          >
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+          <ng-container *ngTemplateOutlet="menu; context: { $implicit: offerCompany }"></ng-container>
+        </rl-card-header-action>
+      </rl-card-header>
+    </rl-card>
+  }
+  @case ('small') {
+    <rl-card class="h-full">
+      <rl-card-header>
+        <rl-card-header-image>
+          <randem-frames-image [url]="offerCompany.customImageUrl"></randem-frames-image>
+        </rl-card-header-image>
+        <rl-card-header-title>{{ offerCompany.customName || offerCompany.offer?.name }}</rl-card-header-title>
+        <rl-card-header-action class="text-nowrap -absolute right-4 top-2 z-10">
+          <button
+            [routerLink]="['/dashboard/offer/company-services', offerCompany.id, 'detail']"
+            mat-icon-button
+            color="accent"
+          >
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+          <ng-container *ngTemplateOutlet="menu; context: { $implicit: offerCompany }"></ng-container>
+        </rl-card-header-action>
+      </rl-card-header>
+
+      <rl-card-content>
+        <rl-grid-card-content>
+          <!--                <rl-card-content-image class="row-span-3 image aspect-auto">-->
+          <!--                    <randem-frames-image [url]="offerCompany.customImageUrl"></randem-frames-image>-->
+          <!--                </rl-card-content-image>-->
+
+          <rl-item>
+            <!--          <rl-item-image>-->
+            <!--            <randem-frames-image-->
+            <!--              [url]=" offerCompany.offer?.imageUrl"-->
+            <!--            ></randem-frames-image>-->
+            <!--          </rl-item-image>-->
+            <rl-item-label>Oferta</rl-item-label>
+            <rl-item-content>{{ offerCompany.offer?.name }}</rl-item-content>
+          </rl-item>
+
+          <rl-item>
+            <!--          <rl-item-image>-->
+            <!--            <randem-frames-image [url]="offerCompany.offer?.category?.imageUrl"></randem-frames-image>-->
+            <!--          </rl-item-image>-->
+            <rl-item-label>Kategoria</rl-item-label>
+            <rl-item-content>{{ offerCompany.offer?.category?.name }}</rl-item-content>
+          </rl-item>
+
+          <!--                <rl-item>-->
+          <!--                    <rl-item-label>Firma wykonująca</rl-item-label>-->
+          <!--                    <rl-item-content>{{ offerCompany.company?.name }}</rl-item-content>-->
+          <!--                </rl-item>-->
+          <!--                <rl-item>-->
+          <!--                    <rl-item-label>dostępność</rl-item-label>-->
+          <!--                    <rl-item-content>{{ offerCompany.availability ? 'dostępna' : 'niedostępna' }}</rl-item-content>-->
+          <!--                </rl-item>-->
+
+          <!--                <rl-item>-->
+          <!--                    <rl-item-label>czas trwania</rl-item-label>-->
+          <!--                    <rl-item-content>{{ offerCompany.duration }}</rl-item-content>-->
+          <!--                </rl-item>-->
+
+          <!--                <rl-item>-->
+          <!--                    <rl-item-label>cena za usługę</rl-item-label>-->
+          <!--                    <rl-item-content>{{ offerCompany.price }}</rl-item-content>-->
+          <!--                </rl-item>-->
+          <rl-item class="col-span-full">
+            <rl-item-label>opis</rl-item-label>
+            <rl-item-content>{{ offerCompany.customDescription }}</rl-item-content>
+          </rl-item>
+        </rl-grid-card-content>
+      </rl-card-content>
+    </rl-card>
+  }
+  @case ('full') {
+    <rl-card class="h-full">
+      <rl-card-header>
+        <rl-card-header-title>{{
+          offerCompany.customName || offerCompany.offer?.name || 'NO NAME!!'
+        }}</rl-card-header-title>
+        <rl-card-header-action class="text-nowrap">
+          <button
+            [routerLink]="['/dashboard/offer/company-services', offerCompany.id, 'detail']"
+            mat-icon-button
+            color="accent"
+          >
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+          <ng-container *ngTemplateOutlet="menu; context: { $implicit: offerCompany }"></ng-container>
+        </rl-card-header-action>
+      </rl-card-header>
+
+      <rl-card-content>
+        <rl-grid-card-content>
+          <rl-card-content-image class="row-span-3 image aspect-video min-h-[240px] max-w-full">
+            <randem-frames-image [url]="offerCompany.customImageUrl"></randem-frames-image>
+          </rl-card-content-image>
+
+          <rl-item>
+            <rl-item-image>
+              <randem-frames-image
+                [url]="offerCompany.company?.imageId || offerCompany.company?.imageUrl"
+              ></randem-frames-image>
+            </rl-item-image>
+            <rl-item-label>Firma wykonująca</rl-item-label>
+            <rl-item-content>{{ offerCompany.company?.name }}</rl-item-content>
+          </rl-item>
+
+          <rl-item>
+            <rl-item-image>
+              <randem-frames-image [url]="offerCompany.offer?.category?.imageUrl"></randem-frames-image>
+            </rl-item-image>
+            <rl-item-label>kategoria</rl-item-label>
+            <rl-item-content>{{ offerCompany.offer?.category?.name }}</rl-item-content>
+          </rl-item>
+
+          <rl-item>
+            <rl-item-image>
+              <randem-frames-image [url]="offerCompany.offer?.imageUrl"></randem-frames-image>
+            </rl-item-image>
+            <rl-item-label>Oferta ogólna</rl-item-label>
+            <rl-item-content>{{ offerCompany.offer?.name }}</rl-item-content>
+          </rl-item>
+
+          <rl-item>
+            <rl-item-label>czas trwania</rl-item-label>
+            <rl-item-content>{{ offerCompany.duration }}</rl-item-content>
+          </rl-item>
+          <rl-item>
+            <rl-item-label>cena za usługę</rl-item-label>
+            <rl-item-content>{{ offerCompany.price }}</rl-item-content>
+          </rl-item>
+          <rl-item>
+            <rl-item-label>dostępność</rl-item-label>
+            <rl-item-content>{{ offerCompany.availability ? 'dostępna' : 'niedostępna' }}</rl-item-content>
+          </rl-item>
+          <rl-item class="col-span-full">
+            <rl-item-label>opis</rl-item-label>
+            <rl-item-content>{{ offerCompany.customDescription }}</rl-item-content>
+          </rl-item>
+        </rl-grid-card-content>
+      </rl-card-content>
+    </rl-card>
+  }
+
+}
+
+<ng-template #menu let-offerCompany>
+  <button [matMenuTriggerFor]="cardMenu" mat-icon-button>
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #cardMenu>
+    <button (click)="openDialogUpdate(offerCompany)" mat-menu-item>
+      <mat-icon>edit</mat-icon>
+      <span>edytuj usługę</span>
+    </button>
+
+    <button (click)="deleteItemList(offerCompany.id)" mat-menu-item>
+      <mat-icon color="warn">delete</mat-icon>
+      <span>usuń usługę</span>
+    </button>
+  </mat-menu>
+</ng-template>

@@ -1,0 +1,34 @@
+<!--TODO dodać parametr cover-contain i zmienić color ramki zgodny z formsami-->
+<div
+    class="border rounded-md min-w-16 min-h-16 w-full h-full cursor-pointer cover-full bg-cover bg-center bg-no-repeat border-neutral-500 flex-grow flex justify-center items-center"
+    [style.background-image]="'url(' + previewImage + ')'"
+    (click)="input.click()"
+    matRipple
+    matTooltip='kliknij lub przeciągnij obraz'
+    matTooltipPosition='above'
+    (mouseover)='edit = true'
+    (mouseleave)='edit = false'
+>
+    <div *ngIf="!previewImage" class='flex flex-col justify-center items-center w-full h-full flex-auto bg-gray-600 opacity-50'>
+        <mat-icon class='min-w-16 min-h-16' style='font-size: 64px'
+        >image</mat-icon>
+<!--        <p class=''></p>-->
+    </div>
+
+    <div *ngIf="previewImage && edit" hidden class='flex flex-col justify-center items-center w-full h-full flex-auto bg-gray-600 opacity-50'>
+        <mat-icon class='min-w-16 min-h-16' style='font-size: 64px'
+        >edit</mat-icon>
+<!--        <p class=''></p>-->
+    </div>
+
+    <div *ngIf="isLoading" hidden class='flex flex-col justify-center items-center w-full h-full flex-auto absolute' #spinner>
+        <mat-spinner  color='primary' [diameter]='spinner.clientHeight / 1.5'
+        ></mat-spinner>
+        <p>Wysyłam dane</p>
+    </div>
+
+</div>
+
+<input #input hidden type="file" (change)="onFile($event)" />
+<!--<button mat-raised-button class="p-8" (click)="upload()">Upload</button>-->
+

@@ -1,0 +1,8 @@
+query GetState($key: String!, $userId: String) {
+    getState(key: $key, userId: $userId) {
+        id
+        key
+        userId
+        value
+    }
+}

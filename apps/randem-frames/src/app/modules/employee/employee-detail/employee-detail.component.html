@@ -1,0 +1,53 @@
+@if (currentEmployee_(); as employee) {
+  <rl-card>
+    <rl-card-content>
+      <rl-grid-card-content class="max-w-[950px] visible">
+        <rl-card-content-image class="row-span-6 h-full w-full aspect-square" style="max-height: 320px">
+          <randem-frames-image [url]="employee.imageUrl ? employee.imageUrl : ''" [size]='"contain"' ></randem-frames-image>
+        </rl-card-content-image>
+
+        <rl-item>
+          <rl-item-label>imię nazwisko</rl-item-label>
+          <rl-item-content>{{ employee.firstName }} {{ employee.lastName }}</rl-item-content>
+        </rl-item>
+
+        <rl-item>
+          <rl-item-label>email</rl-item-label>
+          <rl-item-content>{{ employee.email }}</rl-item-content>
+        </rl-item>
+
+        <rl-item>
+          <rl-item-label>numer telefonu</rl-item-label>
+          <rl-item-content>{{ employee.phoneNumber }}</rl-item-content>
+        </rl-item>
+
+        <rl-item>
+          <rl-item-label>pracuje w firmie</rl-item-label>
+          <rl-item-content>{{ employee.company?.name }}</rl-item-content>
+        </rl-item>
+        <rl-item>
+          <rl-item-label>stanowisko</rl-item-label>
+          <rl-item-content>{{ employee.position }}</rl-item-content>
+        </rl-item>
+        <rl-item>
+          <rl-item-label>dostępność</rl-item-label>
+          <rl-item-content>
+            <span class="uppercase text-xs" [ngClass]="employee.isActive ? 'text-green-600' : 'text-rose-400'">
+              {{ employee.isActive ? 'Dostępny' : 'Niedostępny' }}
+            </span>
+          </rl-item-content>
+        </rl-item>
+      </rl-grid-card-content>
+    </rl-card-content>
+  </rl-card>
+}
+
+@if (!currentEmployee_()) {
+  <rl-card>
+    <rl-card-content>
+      <rl-item>
+        <rl-item-content> Nie znaleziono pracownika </rl-item-content>
+      </rl-item>
+    </rl-card-content>
+  </rl-card>
+}

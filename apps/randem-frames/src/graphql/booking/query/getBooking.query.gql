@@ -1,0 +1,5 @@
+query getBooking($getBookingId: String!) {
+    getBooking(id: $getBookingId) {
+        ...DefaultBooking
+    }
+}

@@ -1,0 +1,58 @@
+<div rlResClass='xxs:xs xs:xs'
+    *ngIf='!appearance.hidden'
+    class="input-container"
+    [classList]="'input-container ' + classList || ''"
+    [style.opacity.%]='appearance.hidden ? 50 : 100'
+>
+    <label
+        class="input-label pr-4 opacity-90"
+        for="{{ formGroupProperty }}"
+        [matTooltip]="appearance.label"
+        matTooltipPosition="right"
+        matTooltipShowDelay="500"
+    >{{ appearance.label || '' }}</label
+    >
+    <input class="input-control rl-input relative" #input
+           [ngClass]="{
+            invalid: error,
+            valid: errorControl.valid && errorControl.touched
+          }"
+           id="{{ formGroupProperty }}"
+           (blur)="focusControl()"
+           [type]="appearance.type || 'text'"
+           [placeholder]="appearance.placeholder"
+           [formControl]="control"
+           [minLength]="appearance.minLength || ''"
+           [maxlength]="appearance.maxLength || ''"
+    />
+    <div *ngIf='control.disabled' class='input-disable-container'
+         [style.width.px]='input.clientWidth'
+         [style.left.px]='input.offsetLeft'
+    ></div>
+
+
+    <div class="cursor-help _border w-8" *ngIf="helpers">
+        <rl-icon [iconName]='"ok"'
+                 *ngIf="errorControl.valid && (errorControl.touched || errorControl.dirty)"
+                 [class]="errorControl.valid && (errorControl.touched || errorControl.dirty) ? 'opacity-100' : 'opacity-0'"
+                 [matTooltip]="'Walidacja poprawna'"
+                 [matTooltipPosition]='"left"'
+        />
+
+
+
+        <rl-icon [iconName]='"error"'
+                 *ngIf="errorControl.invalid && (errorControl.touched || errorControl.dirty)"
+                 [class]="errorControl.invalid && (errorControl.touched || errorControl.dirty) ? 'opacity-100' : 'opacity-0'"
+                 [matTooltip]="'opis błędu'"
+                 [matTooltipPosition]='"left"'
+        />
+
+        <rl-icon [iconName]='"help"'
+                 *ngIf="errorControl.untouched && !errorControl.dirty"
+                 [matTooltip]="'Pomoc do kontrolki: ' + appearance.placeholder"
+                 [matTooltipPosition]='"left"'
+        />
+
+    </div>
+</div>

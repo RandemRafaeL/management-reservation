@@ -1,0 +1,5 @@
+query GetOfferForCompany($getOfferForCompanyId: String!) {
+    getOfferForCompany(id: $getOfferForCompanyId) {
+        ...DetailFullOfferForCompany
+    }
+}

@@ -1,0 +1,24 @@
+@import '../../../../../src/app/core/services/breakpoints/breakpoints';
+
+randem-frames-title-template-content {
+    padding: var(--rl-padding);
+    flex: 1;
+    height: 100%;
+    overflow-y: auto;
+
+    @include breakpoint(xs) {
+        //
+    }
+
+    @include breakpoint(sm) {
+        //
+    }
+
+    @include breakpoint(md, xl) {
+        //
+    }
+
+    @include breakpoint(xxl) {
+        //
+    }
+}

@@ -1,0 +1,27 @@
+<randem-frames-title-template-header>
+  <button
+    hidden="hidden"
+    (click)="openDialogCreate()"
+    mat-fab
+    [matTooltip]="'Dodaj usługę'"
+    matTooltipPosition="left"
+    matTooltipHideDelay="300"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+
+  <button [matMenuTriggerFor]="headerMenu" mat-icon-button class="mat-menu-trigger">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+
+  <randem-frames-list-view-filter />
+  <randem-frames-list-view-menu />
+
+</randem-frames-title-template-header>
+
+<mat-menu #headerMenu>
+  <button mat-menu-item (click)="openDialogCreate()">
+    <mat-icon>add</mat-icon>
+    dodaj usługę
+  </button>
+</mat-menu>

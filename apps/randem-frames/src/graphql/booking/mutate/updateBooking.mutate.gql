@@ -1,0 +1,5 @@
+mutation UpdateBooking($updateBookingId: String!, $updateBookingInput: UpdateBookingInput!) {
+    updateBooking(id: $updateBookingId, updateBookingInput: $updateBookingInput) {
+        ...DefaultBooking
+    }
+}

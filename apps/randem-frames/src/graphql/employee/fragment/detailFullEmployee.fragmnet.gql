@@ -1,0 +1,14 @@
+fragment DetailFullEmployee on EmployeeType {
+    company {
+        id
+        name
+    }
+    id
+    imageUrl
+    email
+    firstName
+    isActive
+    lastName
+    phoneNumber
+    position
+}

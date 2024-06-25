@@ -1,0 +1,37 @@
+rl-card-header {
+    @apply text-base;
+    display: flex;
+    padding-left: calc(var(--rl-padding) / 1.5);
+    padding-right: calc(var(--rl-padding) / 2);
+    padding-bottom: calc(var(--rl-padding) / 2);
+    justify-content: flex-start;
+    align-items: center;
+    line-height: 1.25rem;
+    rl-card-header-image {
+        $image-size: 48px;
+        min-width: $image-size;
+        width: $image-size;
+        height: $image-size;
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        overflow: hidden;
+        margin-right: 1rem ;
+    }
+    rl-card-header-title {
+        //flex-grow: 1;
+    }
+    rl-card-header-action {
+        display: flex;
+        flex: auto;
+        justify-content: flex-end;
+        align-items: center;
+        @apply max-xs:w-full;
+    }
+}
+
+.dark {
+    rl-card-header {
+        @apply bg-neutral-800;
+    }
+}
+

@@ -1,0 +1,17 @@
+<div
+  class="form-dialog-content"
+  rlResClass="one:form-one two:form-two three:form-three four:form-four"
+  [customBreakpoints]="{
+    one: { min: 0, max: 799 },
+    two: { min: 800, max: 1199 },
+    three: { min: 1200, max: 1599 },
+    four: { min: 1600, max: 9000 }
+  }"
+  [style.max-width]="maxWithSignal() ? maxWithSignal() : ''"
+>
+  <div class="w-fit mx-auto pb-6">
+    <div class='border-violet-900 border-2 rounded-xl drop-shadow-2xl shadow-xl shadow-black'>
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

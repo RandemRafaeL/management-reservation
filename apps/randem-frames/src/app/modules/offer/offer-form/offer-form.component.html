@@ -1,0 +1,26 @@
+<rl-form-dialog-container maxColumn='2'>
+  <rl-card [formGroup]="offerFormGroup" class="shadow-xl shadow-black max-xs:w-[95vw] overflow-y-auto">
+    <rl-card-header>
+      <rl-card-header-title> Oferta </rl-card-header-title>
+      <rl-card-header-action>
+        <button (click)="close()" mat-icon-button>
+          <mat-icon>close</mat-icon>
+        </button>
+      </rl-card-header-action>
+    </rl-card-header>
+
+    <rl-card-content>
+      <rl-form-auto [formGroup]="offerFormGroup" [formAppearance]="offerFormAppearance"></rl-form-auto>
+    </rl-card-content>
+
+      <rl-card-footer>
+          <rl-form-dialog-actions
+              [formGroup]="offerFormGroup"
+              [type]="dialogData.offer ? 'update' : 'create'"
+              (clickClose)="close()"
+              (clickCreate)="createOffer()"
+              (clickUpdate)="updateOffer()"
+          ></rl-form-dialog-actions>
+      </rl-card-footer>
+  </rl-card>
+</rl-form-dialog-container>

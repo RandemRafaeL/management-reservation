@@ -1,0 +1,23 @@
+<randem-frames-form-complete
+  class="w-full z-20 box-border"
+  [optionsList]="(companyListForm$ | async) || []"
+  [startValue]="startValue"
+  (selectedItemEmitter)="selectCompany($event)"
+></randem-frames-form-complete>
+
+<rl-card class="!p-0" [style.margin-top]='"var(--rl-padding)"' >
+  <mat-selection-list>
+    @for (item of listOptions; track item) {
+      <mat-list-item class='select-none'
+        style="padding-left: var(--rl-padding)"
+        (click)="item.label === optionActive?.label || navigateTo(item.routerLink)"
+        [class.mdc-list-item--activated]="item.label === optionActive?.label"
+        [class.active]="item.label === optionActive?.label"
+        [disableRipple]='item.label === optionActive?.label'
+
+      >
+        {{ item.label }}</mat-list-item
+      >
+    }
+  </mat-selection-list>
+</rl-card>

@@ -1,0 +1,5 @@
+query ListEmployees_User {
+    listEmployee_User {
+        ...DetailFullEmployee
+    }
+}

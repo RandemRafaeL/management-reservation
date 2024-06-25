@@ -1,0 +1,26 @@
+<div class="relative border-2 border-red-700 flex-grow h-full overflow-y-auto">
+  <!-- title bar-->
+  <mat-toolbar class="!h-28 relative overflow-visible">
+    <h1 class="!text-3xl">Użytkownicy</h1>
+    <div class="absolute right-6 -bottom-6 z-50">
+      <button
+        (click)="('')"
+        mat-fab
+        [matTooltip]="'Dodaj użytkownika'"
+        matTooltipPosition="left"
+        matTooltipHideDelay="300"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+
+  <div
+    class="p-4 relative flex flex-col items-center justify-center border-1 border-red-700 -z-0 box-border"
+    style="z-index: 1"
+  >
+    <div class="pb-4">
+      <randem-frames-user-form></randem-frames-user-form>
+    </div>
+  </div>
+</div>

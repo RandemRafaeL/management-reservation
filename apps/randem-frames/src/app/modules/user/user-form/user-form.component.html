@@ -1,0 +1,27 @@
+<rl-form-dialog-container [maxColumn]="2">
+  <rl-card>
+    <rl-card-header>
+      <rl-card-header-title>
+        <span>Użytkownik </span>
+      </rl-card-header-title>
+      <rl-card-header-action>
+        <button mat-icon-button (click)="closeDialog()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </rl-card-header-action>
+    </rl-card-header>
+    <rl-card-content>
+      <rl-form-auto [formAppearance]="userFormAppearance" [formGroup]="userFormGroup"></rl-form-auto>
+    </rl-card-content>
+
+    <rl-card-footer>
+      <rl-form-dialog-actions
+        [formGroup]="userFormGroup"
+        [type]="dialogData.userId ? 'update' : 'create'"
+        (clickClose)="closeDialog()"
+        (clickCreate)="createUser()"
+        (clickUpdate)="updateUser()"
+      ></rl-form-dialog-actions>
+    </rl-card-footer>
+  </rl-card>
+</rl-form-dialog-container>

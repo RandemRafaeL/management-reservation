@@ -1,0 +1,21 @@
+{
+    "/api": {
+        "target": "http://localhost:3000",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/api": ""
+        }
+    },
+    "/image/*": {
+        "target": "http://localhost:3000",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/image/": "/image/"
+        }
+
+    }
+}

@@ -1,0 +1,71 @@
+<div class="h-full custom-scrollbar _auto-scroll">
+  <mat-action-list style="display: flex; flex-direction: column; min-height: 100%">
+    <ng-container *ngrxLet="onlyIcon$ as onlyIcons">
+      <ng-container *ngrxLet="menuItems$ as navMenuItems">
+        @for (item of navMenuItems; track item; let index = $index) {
+          @if (item['matIcon'] === 'space-grow') {
+            <div class="flex-auto min-h-6"></div>
+          } @else if (item['matIcon'] === 'space-sm') {
+            <div class="min-h-4"></div>
+          } @else if (item['matIcon'] === 'space') {
+            <div class="min-h-8"></div>
+          } @else if (item['matIcon'] === 'space-lg') {
+            <div class="min-h-12"></div>
+          } @else if (item['matIcon'] === 'divider') {
+            <mat-divider />
+          } @else {
+            <mat-list-item
+              (click)="selectNavItemAndNavigate(item, index)"
+              [class.active]="activeLink | activeRoute: item.route"
+              [matTooltip]="onlyIcons ? item?.title || '' : ''"
+              matTooltipPosition="right"
+              matTooltipShowDelay="0"
+              class="menu-item min-w-8"
+              [style.width]="onlyIcons ? '3.5rem' : 'auto'"
+            >
+              <mat-icon matListItemIcon>{{ item['matIcon'] }}</mat-icon>
+              <span class="pr-4">{{ item.title }}</span>
+            </mat-list-item>
+          }
+        }
+        <mat-list-item
+          [matMenuTriggerFor]="settingsMenu"
+          [matTooltip]="onlyIcons ? 'Ustawienia' : ''"
+          matTooltipPosition="right"
+          matTooltipShowDelay="0"
+          class="menu-item min-w-8"
+          [style.width]="onlyIcons ? '3.5rem' : 'auto'"
+        >
+          <mat-icon matListItemIcon>settings</mat-icon>
+          <span class="pr-4" i18n="@@settings_menu">Ustawienia</span>
+        </mat-list-item>
+      </ng-container>
+
+      <mat-menu #settingsMenu xPosition="after" yPosition="above">
+        <div style="min-width: 260px">
+          <button
+            mat-menu-item
+            (click)="toggleHideLabels(); $event.stopPropagation(); slide._handleClick()"
+            style="min-width: 260px; width: 100%; max-width: 260px"
+          >
+            <mat-icon>{{ onlyIcons ? 'label_off' : 'label_on' }} </mat-icon>
+
+            <span class="inline-block" style="min-width: 140px">{{ onlyIcons ? 'Tylko ikony' : 'Ikony i nazwy' }}</span>
+
+            <mat-slide-toggle
+              #slide
+              [checked]="true"
+              (click)="slide._handleClick()"
+              style="align-self: flex-end"
+            ></mat-slide-toggle>
+          </button>
+
+          <button mat-menu-item>
+            <mat-icon>close</mat-icon>
+            <span>close...</span>
+          </button>
+        </div>
+      </mat-menu>
+    </ng-container>
+  </mat-action-list>
+</div>

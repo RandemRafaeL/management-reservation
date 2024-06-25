@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input.rl-input {
+    //color: var(--mdc-outlined-text-field-label-text-color) !important;
+    color: black !important;
+
+    @apply outline outline-0;
+    &:focus {
+        @apply outline-1 outline-violet-700;
+    }
+    &.invalid {
+        @apply outline-1 outline-red-700
+    }
+    &.valid {
+        @apply outline-1 outline-green-700
+    }
+
+}

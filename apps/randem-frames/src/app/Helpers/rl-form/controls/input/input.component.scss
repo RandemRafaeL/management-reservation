@@ -1,0 +1,83 @@
+.input-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: .5rem;
+    column-gap: .5rem;
+    overflow: visible;
+    &.xs {
+        flex-direction: column;
+        row-gap: .5rem;
+        .input-label {
+            max-height: 1.5rem;
+            align-self: flex-start;
+            text-align: left;
+            font-size: smaller;
+            transform: translateY(.5rem);
+        }
+        .input-control {
+            width: calc(100% - 2.5rem);
+            align-self: flex-start;
+        }
+        .cursor-help {
+            position: absolute;
+            right: 0;
+            top: 2.3rem;
+        }
+    }
+
+    .input-label {
+        display: block;
+        flex: 1 1 190px;
+        //font-weight: 300 ;
+        //white-space: nowrap;
+        overflow: hidden;
+        width: max-content;
+        min-width: 190px;
+        max-width: 190px;
+        font-size: .9rem;
+        line-height: 2em;
+        text-align: right;
+        text-overflow: ellipsis;
+    }
+
+    .input-control {
+        flex: 1 1 auto;
+        width: 80%;
+        min-width: 200px;
+
+        @apply border border-black rounded-sm px-2 py-1 bg-neutral-200 ;
+
+        &:disabled {
+            @apply bg-neutral-300
+        }
+    }
+
+    .input-disable-container {
+        position: absolute;
+        inset: 0;
+        background-color: transparent;
+    }
+
+    input.rl-input {
+        //color: var(--mdc-outlined-text-field-label-text-color) !important;
+        color: black !important;
+
+        @apply outline outline-0;
+
+        &:focus {
+            @apply outline-2 outline-violet-700;
+        }
+
+        &.invalid {
+            @apply outline-2 outline-red-700
+        }
+
+        &.valid {
+            @apply outline-2 outline-green-700
+        }
+
+    }
+
+}

@@ -1,0 +1,12 @@
+mutation CreateCompanyForUser($createCompanyInput: CreateCompanyInput!) {
+    createCompanyForUser(createCompanyInput: $createCompanyInput) {
+        address
+        description
+        email
+        id
+        imageId
+        imageUrl
+        name
+        phoneNumber
+     }
+}

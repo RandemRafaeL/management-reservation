@@ -1,0 +1,18 @@
+:host {
+    font-size: 1rem;
+    word-break: break-word;
+    overflow-wrap: break-word ;
+    overflow: hidden;
+    line-height: 1.3em;
+
+    //hyphens: auto;
+    //hyphenate-character: '↵';
+
+
+    &::after {
+        content: '↵'; /* Przykładowy znak wskazujący miejsce łamania tekstu */
+        font-size: smaller;
+        opacity: .5;
+    }
+
+}

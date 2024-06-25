@@ -1,0 +1,37 @@
+<mat-toolbar class="title-header !overflow-visible">
+  <div class="flex flex-row justify-between items-center w-full">
+    <div class="flex items-center gap-4">
+      <button mat-icon-button (click)="back()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+
+      <div class="flex flex-row grow place-content-between content-between justify-between max-md:hidden">
+        <!--        TODO in the future-->
+        <!--        <div>-->
+        <!--          <randem-frames-breadcrumb class="text-lg"></randem-frames-breadcrumb>-->
+        <!--        </div>-->
+        <div class="text-ellipsis text-wrap text-lg self-center" style="line-height: 1em">{{ title | async }}</div>
+        <small *ngIf="key" class='pl-4'>{{ key }}</small>
+      </div>
+    </div>
+
+  <div class='flex grow'>
+    <div class="grow flex justify-end">
+      <ng-content></ng-content>
+    </div>
+
+    <div>
+      <ng-content select=".mat-menu-trigger"></ng-content>
+    </div>
+
+  </div>
+
+  </div>
+
+  <div
+    *ngIf="!((breakpoint$ | async) === 'xs' || (breakpoint$ | async) === 'sm')"
+    class="absolute right-12 -bottom-6 scale-75 z-40"
+  >
+    <ng-content select="button"></ng-content>
+  </div>
+</mat-toolbar>

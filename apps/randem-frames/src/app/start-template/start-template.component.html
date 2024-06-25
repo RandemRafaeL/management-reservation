@@ -1,0 +1,11 @@
+@if (devMode()){
+
+    <div class="main-container background">
+        DEVMODE VER.0001
+    </div>
+}
+
+@if (!devMode()){
+    <div class='relative background' [style.background-image]='"url(assets/backgrounds/dashboard.webp)"'  >
+    </div>
+}

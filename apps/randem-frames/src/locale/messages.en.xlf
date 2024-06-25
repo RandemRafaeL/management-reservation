@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="2.0" xmlns="urn:oasis:names:tc:xliff:document:2.0" srcLang="pl" trgLang="en">
+  <file id="ngi18n" original="ng.template">
+    <unit id="company_menu">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:96</note>
+      </notes>
+      <segment>
+        <source>Podmiot</source>
+        <target>Company</target>
+      </segment>
+    </unit>
+    <unit id="employees_manu">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:97</note>
+      </notes>
+      <segment>
+        <source>Pracownicy</source>
+        <target>Employees</target>
+      </segment>
+    </unit>
+    <unit id="services_menu">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:98</note>
+      </notes>
+      <segment>
+        <source>Usługi</source>
+        <target>Services</target>
+      </segment>
+    </unit>
+    <unit id="analytic_menu">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:99</note>
+      </notes>
+      <segment>
+        <source>Analityka</source>
+        <target>Analytic</target>
+      </segment>
+    </unit>
+    <unit id="reservation">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:100</note>
+      </notes>
+      <segment>
+        <source>Rezerwacje</source>
+        <target>Reservation</target>
+      </segment>
+    </unit>
+    <unit id="Chat_menu">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:102</note>
+      </notes>
+      <segment>
+        <source>Komunikator</source>
+        <target>Chat</target>
+      </segment>
+    </unit>
+    <unit id="email_menu">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:103</note>
+      </notes>
+      <segment>
+        <source>E-mail</source>
+        <target>E-mail</target>
+      </segment>
+    </unit>
+    <unit id="table_menu">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:104</note>
+      </notes>
+      <segment>
+        <source>Tablica</source>
+        <target>Table</target>
+      </segment>
+    </unit>
+    <unit id="tasks_menu">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:105</note>
+      </notes>
+      <segment>
+        <source>Zadania</source>
+        <target>Tasks</target>
+      </segment>
+    </unit>
+    <unit id="priceList_menu">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:107</note>
+      </notes>
+      <segment>
+        <source>Cennik</source>
+        <target>Price list</target>
+      </segment>
+    </unit>
+    <unit id="Profile">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/dashboard.component.ts:108</note>
+      </notes>
+      <segment>
+        <source>Profil</source>
+        <target>Profile</target>
+      </segment>
+    </unit>
+    <unit id="hello_Dashboard">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/start/start-dashboard.component.html:3,5</note>
+      </notes>
+      <segment>
+        <source> Witaj w centrum zarządzania i rezerwacji! </source>
+        <target> Welcome to the reservation and management center! </target>
+      </segment>
+    </unit>
+    <unit id="weAreHereCause_Dashboard">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/start/start-dashboard.component.html:6,10</note>
+      </notes>
+      <segment>
+        <source> Jesteśmy tu, aby pomóc Ci zwiększyć efektywność Twojego biznesu. Nasza platforma oferuje kompleksowe rozwiązania do zarządzania rezerwacjami, klientami i usługami. Dzięki intuicyjnym funkcjom i zaawansowanym narzędziom analizy, możesz nie tylko usprawnić codzienną pracę, ale także rozwijać swoją działalność z myślą o przyszłości. </source>
+        <target> We're here to help you enhance your business efficiency. Our platform offers comprehensive solutions for managing reservations, clients, and services. With intuitive features and advanced analysis tools, you can streamline daily operations and grow your business with the future in mind. </target>
+      </segment>
+    </unit>
+    <unit id="discoverPlatform_Dashboard">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/start/start-dashboard.component.html:18,20</note>
+      </notes>
+      <segment>
+        <source> Odkryj, jak nasza platforma może wpłynąć na przyszłość Twojej firmy. </source>
+        <target> Discover how our platform can impact the future of your company. </target>
+      </segment>
+    </unit>
+    <unit id="HereWhatWeOffer_Dashboard">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/start/start-dashboard.component.html:24</note>
+      </notes>
+      <segment>
+        <source>Oto, co oferujemy:</source>
+        <target>This is what we offer:</target>
+      </segment>
+    </unit>
+    <unit id="advancedReservationManagement_Dashboard">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/start/start-dashboard.component.html:26,29</note>
+      </notes>
+      <segment>
+        <source> Zaawansowane zarządzanie rezerwacjami: Łatwość w zarządzaniu terminami, elastyczne opcje rezerwacji dla Twoich klientów oraz szybki dostęp do historii i planów pracy. </source>
+        <target> Advanced reservation management: Ease of scheduling, flexible booking options for your clients, and quick access to history and work plans. </target>
+      </segment>
+    </unit>
+    <unit id="comprehensiveCustomerDatabase_Dashboard">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/start/start-dashboard.component.html:30,33</note>
+      </notes>
+      <segment>
+        <source> Kompleksowa baza klientów: Przechowuj i zarządzaj informacjami o klientach w bezpieczny i uporządkowany sposób. Poznaj ich potrzeby i preferencje, aby świadczyć jeszcze lepsze usługi. </source>
+        <target> Comprehensive customer database: Store and manage client information in a secure and organized manner. Understand their needs and preferences to provide even better services. </target>
+      </segment>
+    </unit>
+    <unit id="analysisAndReporting_Dashboard">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/start/start-dashboard.component.html:34,37</note>
+      </notes>
+      <segment>
+        <source> Analiza i raportowanie: Zyskaj dostęp do szczegółowych danych i trendów, które pomogą Ci w podejmowaniu świadomych decyzji biznesowych. Śledź swoje postępy i identyfikuj obszary do rozwoju. </source>
+        <target> Analysis and reporting: Gain access to detailed data and trends that will assist you in making informed business decisions. Track your progress and identify areas for development. </target>
+      </segment>
+    </unit>
+    <unit id="personalizationAndCustomization_Dashboard">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/start/start-dashboard.component.html:38,41</note>
+      </notes>
+      <segment>
+        <source> Personalizacja i dostosowanie: Możliwość dostosowania funkcji platformy do specyfiki Twojej działalności, aby maksymalnie wykorzystać jej potencjał. </source>
+        <target> Personalization and customization: The ability to tailor platform features to the specifics of your business to fully leverage its potential. </target>
+      </segment>
+    </unit>
+    <unit id="ourPlatformIsNotJustATool_Dashboard">
+      <notes>
+        <note category="location">apps/randem-frames/src/app/templates/dashboard/start/start-dashboard.component.html:42,47</note>
+      </notes>
+      <segment>
+        <source> Nasza platforma to nie tylko narzędzie - to partner w rozwijaniu Twojego biznesu. Niezależnie od tego, czy zarządzasz salonem fryzjerskim, gabinetem kosmetycznym, czy siecią restauracji, nasze rozwiązanie zostało zaprojektowane, aby wspierać Twój sukces na każdym kroku. Rozpocznij swoją podróż ku lepszej organizacji i większej efektywności już teraz. </source>
+        <target> Our platform is not just a tool - it's a partner in growing your business. Whether you manage a hair salon, a beauty parlor, or a chain of restaurants, our solution is designed to support your success at every step. Begin your journey towards better organization and increased efficiency today. </target>
+      </segment>
+    </unit>
+  </file>
+</xliff>
