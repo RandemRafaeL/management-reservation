@@ -1,4 +1,4 @@
-# R&D managment reservation - Angular - Prisma - NestJS - PostGre - GraphQl - Material - i18n - CodeGen - Nx Monorepo - IDEA integration
+# R&D managment reservation - Angular - Prisma - NestJS - PostGre - GraphQl - Material - Taillwind - i18n - CodeGen - Nx Monorepo - IDEA integration
 
 ✨ **[Demostration](https://rafaelrandem.xyz)** ✨
 
